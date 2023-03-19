@@ -1,15 +1,17 @@
 import { Scroll, ScrollControls, Stars } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import { Bloom, EffectComposer } from '@react-three/postprocessing'
+import { Canvas, useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
 import { Perf } from 'r3f-perf'
+import { createSculptureWithGeometry } from 'shader-park-core'
 import Moons from './components/Moons'
 import StarsModel from './components/StarsModel'
 // import Star from "./Star";
-import { Suspense } from 'react'
+import { Suspense, useRef } from 'react'
+import { SphereGeometry } from 'three'
 import './App.css'
 import Html from './components/Html'
 import Images from './components/ImageComp'
+import { spCode } from './components/spCode'
 
 const randomVector = (r) => [
   r / 2 - Math.random() * r,
@@ -34,6 +36,40 @@ const data2 = Array.from({ length: 100 }, (r = 35) => ({
   rotation: randomEuler(),
 }))
 
+const Torus = () => {
+  const scene = useRef(null)
+  // const [hovered, setHovered] = useState(false);
+
+  let geometry = new SphereGeometry(1.5, 32, 32)
+  // geometry.scale(4.5, 0.8, 1)
+  geometry.computeBoundingSphere()
+  geometry.center()
+
+  let params = { time: 0 }
+  // function spCode() {
+  //   return `
+  //     box(vec3(1.5));
+  // `
+  // }
+  let torus = createSculptureWithGeometry(geometry, spCode(), () => ({
+    time: params.time,
+  }))
+  console.log(torus)
+
+  useFrame(() => {
+    if (!scene.current) return
+    // scene.current.rotation.y += 0.04
+    // scene.current.rotation.x += 0.04
+    // scene.current.rotation.z += 0.04
+    params.time += 0.01
+  })
+
+  return (
+    <group ref={scene}>
+      <primitive object={torus} position={[0, 0, 0]} />
+    </group>
+  )
+}
 // const Images = () => {
 //   const scroll = useScroll()
 
@@ -52,25 +88,27 @@ const data2 = Array.from({ length: 100 }, (r = 35) => ({
 // }
 
 export default function App() {
-  const { range } = useControls({
+  let { range } = useControls({
     range: { value: 30, min: 0, max: 300, step: 10 },
   })
+
   return (
     <Suspense fallback={null}>
       <Canvas>
-        <EffectComposer>
+        {/* <EffectComposer>
           <Bloom
             mipmapBlur
             luminanceThreshold={0}
             luminanceSmoothing={0.9}
             height={300}
           />
-        </EffectComposer>
+        </EffectComposer> */}
         <directionalLight intensity={0.9} />
         <ambientLight intensity={0.2} />
         <color attach="background" args={['#000']} />
         {/* <OrbitControls /> */}
         <Stars />
+        <Torus />
         <ScrollControls pages={3} damping={1}>
           <Scroll>
             <StarsModel data={data} range={range * 1.5} />
