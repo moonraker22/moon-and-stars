@@ -12,6 +12,7 @@ import { SphereGeometry } from 'three'
 import './App.css'
 import Html from './components/Html'
 import Images from './components/ImageComp'
+import SpaceshipFlame from './components/SpaceshipFlame'
 import { spCode } from './components/spCode'
 
 const randomVector = (r) => [
@@ -24,14 +25,14 @@ const randomEuler = () => [
   Math.random() * Math.PI,
   Math.random() * Math.PI,
 ]
-const data = Array.from({ length: 100 }, (r = 35) => ({
+const data = Array.from({ length: 100 }, (r = 55) => ({
   random: Math.random(),
   position: randomVector(r),
   rotation: randomEuler(),
   scale: [0.8, 0.8, 0.8],
 }))
 
-const data2 = Array.from({ length: 100 }, (r = 35) => ({
+const data2 = Array.from({ length: 100 }, (r = 55) => ({
   random: Math.random(),
   position: randomVector(r),
   rotation: randomEuler(),
@@ -90,7 +91,7 @@ const Torus = () => {
 
 export default function App() {
   let { range } = useControls({
-    range: { value: 30, min: 0, max: 300, step: 10 },
+    range: { value: 20, min: 0, max: 300, step: 10 },
   })
 
   return (
@@ -115,6 +116,10 @@ export default function App() {
           <Scroll>
             <StarsModel data={data} range={range * 1.5} />
             <Moons data={data2} range={range} />
+            <SpaceshipFlame
+              rotation={[Math.PI, Math.PI / 4, Math.PI]}
+              position={[4, -12, 0]}
+            />
             <Images />
           </Scroll>
           <Html />

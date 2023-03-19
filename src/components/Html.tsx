@@ -7,7 +7,10 @@ const Html = () => {
   const moonrakerRef = useRef<HTMLDivElement>(null!)
   const webRef = useRef<HTMLDivElement>(null!)
   const devRef = useRef<HTMLDivElement>(null!)
+  const inspRef = useRef<HTMLDivElement>(null!)
   let offset = 1 - scroll.offset
+
+  // const { height, width } = useThree((state) => state.size)
   useFrame((state, delta) => {
     // The offset is between 0 and 1, you can apply it to your models any way you like
     offset = scroll.offset
@@ -54,6 +57,20 @@ const Html = () => {
       >
         DeV
       </h1>
+      <p
+        ref={inspRef}
+        style={{
+          position: 'absolute',
+          top: '240vh',
+          left: '35.5vw',
+          fontSize: '4vw',
+          color: 'gray',
+          textShadow: '0 0 0.5em gray',
+          textAlign: 'center',
+        }}
+      >
+        Stay Inspired💫
+      </p>
     </Scroll>
   )
 }

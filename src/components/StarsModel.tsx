@@ -44,5 +44,8 @@ const Stars = ({ range, data }) => {
     </Instances>
   )
 }
+useGLTF.preload(
+  'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/star/model.gltf'
+)
 
 export default Stars
