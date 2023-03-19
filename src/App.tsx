@@ -6,6 +6,7 @@ import { createSculptureWithGeometry } from 'shader-park-core'
 import Moons from './components/Moons'
 import StarsModel from './components/StarsModel'
 // import Star from "./Star";
+import { Bloom, EffectComposer } from '@react-three/postprocessing'
 import { Suspense, useRef } from 'react'
 import { SphereGeometry } from 'three'
 import './App.css'
@@ -54,7 +55,7 @@ const Torus = () => {
   let torus = createSculptureWithGeometry(geometry, spCode(), () => ({
     time: params.time,
   }))
-  console.log(torus)
+  // console.log(torus)
 
   useFrame(() => {
     if (!scene.current) return
@@ -95,20 +96,21 @@ export default function App() {
   return (
     <Suspense fallback={null}>
       <Canvas>
-        {/* <EffectComposer>
+        <EffectComposer>
           <Bloom
             mipmapBlur
             luminanceThreshold={0}
             luminanceSmoothing={0.9}
+            intensity={3.0}
             height={300}
           />
-        </EffectComposer> */}
-        <directionalLight intensity={0.9} />
+        </EffectComposer>
+        <directionalLight intensity={1.9} />
         <ambientLight intensity={0.2} />
         <color attach="background" args={['#000']} />
         {/* <OrbitControls /> */}
         <Stars />
-        <Torus />
+        {/* <Torus /> */}
         <ScrollControls pages={3} damping={1}>
           <Scroll>
             <StarsModel data={data} range={range * 1.5} />
