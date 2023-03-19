@@ -27,8 +27,8 @@ const Moons = ({ range, data }) => {
   const texture = useTexture('moon.jpeg')
   return (
     <Instances range={range}>
-        <sphereGeometry args={[0.5, 32]} />
-        <meshStandardMaterial map={texture} toneMapped={false} emissive={1.5} />
+      <sphereGeometry args={[0.5, 32]} />
+      <meshStandardMaterial map={texture} toneMapped={false} emissive={1.5} />
       <Instance />
       <group position={[0, 0, 0]}>
         <Float>
