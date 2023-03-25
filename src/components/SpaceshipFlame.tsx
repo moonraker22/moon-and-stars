@@ -14,7 +14,7 @@ export default function Model(props) {
   const { actions } = useAnimations(animations, group)
 
   useEffect(() => {
-    actions['ConeAction'].play()
+    actions['ConeAction'].play().fadeIn(0.5)
     actions['Cube.003'].play()
   }, [actions])
 
@@ -36,6 +36,12 @@ export default function Model(props) {
       Math.sin(t / 4) / 2
     )
   })
+  for (const key in nodes) {
+    if (nodes[key].isMesh) {
+      nodes[key].castShadow = true
+      nodes[key].receiveShadow = true
+    }
+  }
 
   return (
     <group ref={group} {...props} dispose={null} scale={2}>

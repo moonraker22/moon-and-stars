@@ -11,6 +11,12 @@ export default function Model(props) {
   const { nodes, materials } = useGLTF(
     'https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/low-poly-spaceship/model.gltf'
   )
+  //   for (const key in nodes) {
+  //     if (nodes[key].isMesh) {
+  //       nodes[key].castShadow = true
+  //       nodes[key].receiveShadow = true
+  //     }
+  //   }
   return (
     <group ref={group} {...props} dispose={null}>
       <mesh geometry={nodes.Cube005.geometry} material={materials.Mat0} />

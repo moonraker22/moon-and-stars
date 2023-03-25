@@ -43,8 +43,7 @@ const Moons = ({ range, data }) => {
   return (
     <Instances range={range}>
       <sphereGeometry args={[0.5, 32]} />
-      <meshStandardMaterial map={texture} toneMapped={false} emissive={1.5} />
-      <Instance />
+      <meshStandardMaterial map={texture} />
       <group position={[0, 0, 0]}>
         <Float>
           {data.map((props, i) => {
