@@ -1,16 +1,14 @@
 import { Scroll, ScrollControls, Select, Stars } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Perf } from 'r3f-perf'
-import Moons from './components/Moons'
 import StarsModel from './components/StarsModel'
 // import Star from "./Star";
 import { Suspense } from 'react'
 // import { createSculptureWithGeometry, createSculpture } from 'shader-park-core'
 import './App.css'
-import Html from './components/Html'
-import Images from './components/ImageComp'
-import SpaceshipFlame from './components/SpaceshipFlame'
-import { data, data2 } from './store'
+// import Plane from './components/Plane'
+import CameraTrac from './components/CameraTrac'
+import { data } from './store'
 
 // const Torus = () => {
 //   const scene = useRef(null)
@@ -48,6 +46,7 @@ import { data, data2 } from './store'
 // }
 import { Selection } from '@react-three/postprocessing'
 import Effects from './components/Effects'
+import MyPlane from './components/Plane'
 
 export default function App() {
   // let { range } = useControls(
@@ -56,6 +55,7 @@ export default function App() {
   //   },
   //   { collapsed: true }
   // )
+  const height = window.innerHeight
 
   return (
     <>
@@ -65,18 +65,19 @@ export default function App() {
           <ambientLight intensity={0.2} />
           <color attach="background" args={['#000']} />
           <Stars />
-          <ScrollControls pages={3} damping={1}>
+          {/* <OrbitControls /> */}
+          <ScrollControls pages={13} damping={1}>
             <Scroll>
               <StarsModel data={data} range={15 * 1.5} />
               <Selection>
                 <Effects />
 
                 <Select>
-                  <Moons data={data2} range={15} />
-                  <SpaceshipFlame
-                    rotation={[Math.PI, Math.PI / 4, Math.PI]}
-                    position={[4, -12, 0]}
-                  />
+                  {/* <Moons data={data2} range={15} />
+              <SpaceshipFlame
+                rotation={[Math.PI, Math.PI / 4, Math.PI]}
+                position={[4, -12, 0]}
+              /> */}
                 </Select>
               </Selection>
               {/* <Asteroid
@@ -84,14 +85,17 @@ export default function App() {
               position={[65, -14, 30]}
               scale={3.5}
             /> */}
-              <Images />
+              {/* <Images /> */}
+
               {/* <Asteroid
               rotation={[Math.PI, Math.PI / 4, Math.PI]}
               position={[-15, -3, 20]}
               scale={[1, 1.5, 1.5]}
             /> */}
+              <MyPlane args={[10, 10]} position={[0, 0, -10]} />
             </Scroll>
-            <Html />
+            <CameraTrac />
+            {/* <Html /> */}
           </ScrollControls>
           <Perf position={'top-left'} />
         </Canvas>

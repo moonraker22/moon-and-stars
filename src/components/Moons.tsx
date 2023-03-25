@@ -15,12 +15,15 @@ const Moon = ({ random, ...props }) => {
 
   useFrame((state) => {
     const offset = scroll.offset
-    state.camera.position.set(
-      Math.sin(offset) * -10,
-      Math.atan(offset * Math.PI * 2) * 5,
-      Math.cos((offset * Math.PI) / 3) * -10
-    )
-    state.camera.lookAt(0, 0, 0)
+
+    // state.camera.position.set(
+    //   Math.sin(offset) * -10,
+    //   Math.atan(offset * Math.PI * 2) * 5,
+    //   Math.cos((offset * Math.PI) / 3) * -10
+    // )
+    // state.camera.lookAt(0, 0, 0)
+    // state.camera.rotation.set(0, offset * Math.PI, 0)
+
     //   if (!ref.current) return
     //   const t = state.clock.getElapsedTime() + random * 10000
     //   ref.current.position.y = Math.sin(t / 1.5) / 2
