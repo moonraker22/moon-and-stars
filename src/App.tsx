@@ -1,14 +1,13 @@
 import { Scroll, ScrollControls, Select, Stars } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
 import { Perf } from 'r3f-perf'
 import StarsModel from './components/StarsModel'
 // import Star from "./Star";
-import { Suspense } from 'react'
 // import { createSculptureWithGeometry, createSculpture } from 'shader-park-core'
 import './App.css'
 // import Plane from './components/Plane'
 import CameraTrac from './components/CameraTrac'
-import { data } from './store'
+import MyCanvas from './components/MyCanvas'
+import { data, data2 } from './store'
 
 // const Torus = () => {
 //   const scene = useRef(null)
@@ -46,7 +45,10 @@ import { data } from './store'
 // }
 import { Selection } from '@react-three/postprocessing'
 import Effects from './components/Effects'
+import HtmlContent from './components/HtmlContent'
+import Moons from './components/Moons'
 import MyPlane from './components/Plane'
+import SpaceshipFlame from './components/SpaceshipFlame'
 
 export default function App() {
   // let { range } = useControls(
@@ -57,27 +59,37 @@ export default function App() {
   // )
   const height = window.innerHeight
 
+  // const tubeRef = useRef<any>()
+  // console.log('🚀 ~ file: App.tsx:61 ~ App ~ tubeRef:', tubeRef)
+  // const scene = useThree((state) => state.scene)
+  // console.log('🚀 ~ file: Plane.tsx:9 ~ MyPlane ~ scene:', scene)
+
+  // const scroll = useScroll()
+  // console.log('🚀 ~ file: App.tsx:70 ~ App ~ scroll:', scroll)
+  // const t = (scroll.offset % 1) / 1
+  // console.log('🚀 ~ file: App.tsx:65 ~ App ~ t:', t)
+
   return (
     <>
-      <Suspense>
-        <Canvas>
-          <directionalLight intensity={1.9} castShadow position={[10, 10, 5]} />
-          <ambientLight intensity={0.2} />
-          <color attach="background" args={['#000']} />
-          <Stars />
-          {/* <OrbitControls /> */}
-          <ScrollControls pages={13} damping={1}>
+      <MyCanvas>
+        <directionalLight intensity={1.9} castShadow position={[10, 10, 5]} />
+        <ambientLight intensity={0.2} />
+        <color attach="background" args={['#000']} />
+        <Stars />
+        {/* <OrbitControls /> */}
+        <ScrollControls pages={13} damping={1}>
+          <CameraTrac>
             <Scroll>
               <StarsModel data={data} range={15 * 1.5} />
               <Selection>
                 <Effects />
 
                 <Select>
-                  {/* <Moons data={data2} range={15} />
-              <SpaceshipFlame
-                rotation={[Math.PI, Math.PI / 4, Math.PI]}
-                position={[4, -12, 0]}
-              /> */}
+                  <Moons data={data2} range={15} />
+                  <SpaceshipFlame
+                    rotation={[Math.PI, Math.PI / 4, Math.PI]}
+                    position={[4, -12, 0]}
+                  />
                 </Select>
               </Selection>
               {/* <Asteroid
@@ -94,12 +106,11 @@ export default function App() {
             /> */}
               <MyPlane args={[10, 10]} position={[0, 0, -10]} />
             </Scroll>
-            <CameraTrac />
-            {/* <Html /> */}
-          </ScrollControls>
-          <Perf position={'top-left'} />
-        </Canvas>
-      </Suspense>
+            <HtmlContent />
+          </CameraTrac>
+        </ScrollControls>
+        <Perf position={'top-left'} />
+      </MyCanvas>
     </>
   )
 }

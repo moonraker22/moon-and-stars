@@ -1,5 +1,6 @@
 import { useScroll } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
+import { createContext, useEffect, useRef, useState } from 'react'
 import {
   MathUtils,
   Mesh,
@@ -10,9 +11,11 @@ import {
 } from 'three'
 import { KnotCurve } from 'three/examples/jsm/curves/CurveExtras'
 
-type Props = {}
+type Props = {
+  children: React.ReactNode
+}
 
-const CameraTrac = (props: Props) => {
+const CameraTrac = ({ children }: Props) => {
   // const curve = new FigureEightPolynomialKnot()
   // const curve = new HeartCurve()
   // nice curve
@@ -22,10 +25,11 @@ const CameraTrac = (props: Props) => {
   const tubeGeo = new TubeGeometry(curve, 100, 0.9, 10, true)
   const tubeMat = new MeshBasicMaterial({ color: 0x00ff00 })
   tubeMat.wireframe = true
-  // tubeMat.visible = false
+  tubeMat.visible = false
   const tube = new Mesh(tubeGeo, tubeMat)
 
   const scroll = useScroll()
+  const tubeRef = useRef<any>()
 
   const position = new Vector3()
   const cameraTarget = new Object3D()
@@ -87,13 +91,31 @@ const CameraTrac = (props: Props) => {
     })
   })
 
+  const [tubeState, setTubeState] = useState(tubeRef.current)
+
+  useEffect(() => {
+    setTubeState(tubeRef.current)
+  }, [])
+
   return (
     <>
-      <group>
-        <primitive object={tube} />
-      </group>
+      <Context.Provider value={tubeState}>
+        <group>
+          <primitive object={tube} ref={tubeRef} />
+          {children}
+        </group>
+      </Context.Provider>
     </>
   )
 }
+export const Context = createContext(null)
+
+// const context = {
+//   tubeRef: null,
+// }
+
+// export const useTube = () => {
+//   return useContext(Context)
+// }
 
 export default CameraTrac
