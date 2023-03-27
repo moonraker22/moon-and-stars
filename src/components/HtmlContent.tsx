@@ -93,17 +93,6 @@ const HtmlContent = () => {
         stroke="currentColor"
         className="absolute top-[89vh] left-[94vw] h-10 w-10 animate-bounce text-zinc-300"
         ref={chevronRef}
-        // initial={{
-        //   y: 0,
-        // }}
-        // animate={{
-        //   y: [0, 10, 0],
-        // }}
-        // transition={{
-        //   duration: 1,
-        //   ease: "easeInOut",
-        //   repeat: Infinity,
-        // }}
       >
         <path
           // stroke-linecap="round"
@@ -114,69 +103,32 @@ const HtmlContent = () => {
 
       <h1
         ref={webRef}
-        style={{
-          // position: "absolute",
-          // top: "100vh",
-          // left: "75vw",
-          // fontSize: "8vw",
-          // color: "#C5C2BA",
-          lineHeight: "0.9em",
-        }}
-        className="absolute top-[100vh] left-[75vw] h-10 w-10 text-center  text-8xl text-zinc-300"
+        className="shadow-gray absolute top-[100vh] left-[75vw] h-10 w-10 text-center text-8xl  leading-none text-zinc-300"
       >
         I'm Zac
       </h1>
       <h3
         ref={devRef}
-        style={{
-          // position: "absolute",
-          // top: "110.5vh",
-          // left: "3.5vw",
-          // fontSize: "7vw",
-          // color: "#C5C2BA",
-          lineHeight: "0.8em",
-        }}
-        className="absolute top-[120vh] left-[3.5vw] h-10 w-10  text-center text-7xl text-zinc-400"
+        className="shadow-gray absolute top-[120vh] left-[3.5vw] h-10 w-10 text-center  text-7xl leading-none text-zinc-400"
       >
         I build stuff for the web
       </h3>
       <p
         ref={builtRef}
-        style={{
-          // position: "absolute",
-          // top: "240vh",
-          // left: "65.5vw",
-          // fontSize: "4vw",
-          // color: "gray",
-          textShadow: "0 0 0.5em gray",
-          // textAlign: "center",
-          lineHeight: "0.9em",
-          width: "20vw",
-        }}
-        className="absolute top-[240vh] left-[65.5vw] h-10 w-10  text-center text-6xl text-zinc-300"
+        className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
       </p>
       <div
-        // ref={inspRef}
         style={{
-          // position: "absolute",
-          top: "350vh",
           left: `${width > 768 ? rightBox : "2vw"}`,
-          fontSize: "4vw",
-          // color: "gray",
           textShadow: "0 0 0.5em gray",
-          // textAlign: "center",
-          // width: "30vw",
-          // height: "60vw",
-          // backgroundColor: "white",
-          // borderRadius: "5px",
-          // opacity: "0.9",
         }}
-        className="project min-w-[450px] border-cyan-200 text-cyan-500 shadow-cyan-500/50"
+        className="project top-[350vh] min-w-[450px] border-cyan-200  text-cyan-500 shadow-cyan-500/50"
       >
-        {/* <div className=""> */}
-        <div className="m-5  w-96 p-5 text-6xl font-bold">Pay Tracker</div>
+        <div className="shadow-cyan m-5  w-96 p-5 text-6xl font-bold">
+          Pay Tracker
+        </div>
         <p className="m-5  p-5 text-2xl text-slate-200">
           An app I built using React, TypeScript, Firebase, and Chakra UI. It
           allows drivers to calculate pay, miles and time off, and stores it in
