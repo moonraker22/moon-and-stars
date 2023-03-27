@@ -1,16 +1,21 @@
-import { Canvas } from '@react-three/fiber'
-import { Suspense } from 'react'
+import { Loader, Preload } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 
-type Props = {}
+type Props = {};
 
 const MyCanvas = ({ children }) => {
   return (
     <>
       <Suspense>
-        <Canvas>{children}</Canvas>
+        <Canvas camera={{ fov: 65 }}>
+          <Preload all />
+          {children}
+        </Canvas>
+        <Loader />
       </Suspense>
     </>
-  )
-}
+  );
+};
 
-export default MyCanvas
+export default MyCanvas;

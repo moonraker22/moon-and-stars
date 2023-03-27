@@ -5,3 +5,12 @@
 * {
   box-sizing: border-box;
 }
+
+@layer components {
+  .project {
+    @apply absolute  mx-auto flex items-center space-x-4 rounded-xl border-2  bg-transparent p-6 text-center   antialiased opacity-90 transition duration-500 ease-in-out hover:scale-105 hover:shadow-2xl;
+  }
+  .project-header {
+    @apply absolute inset-x-0 top-0 min-w-full rounded-xl bg-transparent;
+  }
+}
