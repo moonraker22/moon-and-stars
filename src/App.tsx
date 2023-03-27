@@ -72,7 +72,7 @@ export default function App() {
   return (
     <>
       <MyCanvas>
-        <directionalLight intensity={1.9} castShadow position={[10, 10, 5]} />
+        <directionalLight intensity={1.1} castShadow position={[10, 10, 5]} />
         <ambientLight intensity={0.2} />
         <color attach="background" args={["#000"]} />
         {/* <OrbitControls /> */}
