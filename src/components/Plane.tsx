@@ -1,32 +1,31 @@
-import { animated } from '@react-spring/three'
-import { Plane, useScroll, useTexture } from '@react-three/drei'
-import { useThree } from '@react-three/fiber'
-import { useContext, useEffect, useRef, useState } from 'react'
-import { Vector3 } from 'three'
-import { Context } from './CameraTrac'
+import { animated } from "@react-spring/three";
+import { Html, Plane, useScroll, useTexture } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Vector3 } from "three";
+import { Context } from "./CameraTrac";
 
-type Props = {}
+type Props = {};
 
 // end pos is 13, -35, 15
 
 const MyPlane = ({ ...props }) => {
-  const planeRef = useRef<any>()
-  const endRef = useRef<any>()
-  const AnimatedPlane = animated(Plane)
-  const scroll = useScroll()
-  const tubeRef = useContext(Context)
+  const planeRef = useRef<any>();
+  const endRef = useRef<any>();
+  const AnimatedPlane = animated(Plane);
+  const scroll = useScroll();
+  const tubeRef = useContext(Context);
 
-  const [nextPosition, setNextPosition] = useState(new Vector3())
+  // const [nextPosition, setNextPosition] = useState(new Vector3());
 
   const [position, setPosition] = useState(
     new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.01))
-  )
+  );
 
-  const [endPosition, setEndPosition] = useState(
-    new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.99))
-  )
-  console.log('🚀 ~ file: Plane.tsx:25 ~ MyPlane ~ endPosition:', endPosition)
-  const viewDirection = new Vector3()
+  // const [endPosition, setEndPosition] = useState(
+  //   new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.99))
+  // );
+  const viewDirection = new Vector3();
 
   //   const [springs, api] = useSpring(() => ({
   //     position: new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.01)),
@@ -34,22 +33,22 @@ const MyPlane = ({ ...props }) => {
   //   }))
   //   console.log(springs)
 
-  const cameraRotation = useThree((state) => state.camera.rotation)
-  const cameraPosition = useThree((state) => state.camera.position)
+  const cameraRotation = useThree((state) => state.camera.rotation);
+  const cameraPosition = useThree((state) => state.camera.position);
   //   viewDirection.set(0, 0, -1).applyQuaternion(cameraRotation)
-  viewDirection.setFromEuler(cameraRotation)
+  viewDirection.setFromEuler(cameraRotation);
 
   useEffect(() => {
-    let test = new Vector3()
+    let test = new Vector3();
     if (tubeRef) {
-      test = tubeRef?.geometry.parameters.path.getPointAt(0.01)
-      setPosition(test)
+      test = tubeRef?.geometry.parameters.path.getPointAt(0.01);
+      setPosition(test);
 
-      setNextPosition(tubeRef?.geometry.parameters.path.getPointAt(0.09))
-      setEndPosition(tubeRef?.geometry.parameters.path.getPointAt(0.99))
+      // setNextPosition(tubeRef?.geometry.parameters.path.getPointAt(0.09));
+      // setEndPosition(tubeRef?.geometry.parameters.path.getPointAt(0.9999));
     }
     // console.log(tubeRef?.geometry.parameters.path.getPointAt(1.5))
-  }, [tubeRef])
+  }, [tubeRef]);
 
   //   const handlePointerEnter = () => {
   //     api.start({
@@ -67,7 +66,43 @@ const MyPlane = ({ ...props }) => {
   //     }
   //   }, [cameraPosition])
 
-  const texture = useTexture('moon.jpeg')
+  const moonTex = useTexture("moon.jpeg");
+  // const earthTex = useTexture("earth-color.jpg");
+  const moonRef = useRef<any>();
+
+  useFrame(() => {
+    if (moonRef) {
+      moonRef.current.rotation.x += 0.0009;
+      // moonRef.current.rotation.y += 0.009;
+    }
+  });
+
+  // const { xPos } = useControls("X", {
+  //   xPos: {
+  //     value: 140,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
+
+  // const { yPos } = useControls("Y", {
+  //   yPos: {
+  //     value: -183,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
+
+  // const { zPos } = useControls("Z", {
+  //   zPos: {
+  //     value: -2,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
 
   return (
     <>
@@ -87,8 +122,25 @@ const MyPlane = ({ ...props }) => {
           scale={[2, 1, 1]}
           //   onClick={handlePointerEnter}
           ref={planeRef}
-        />
-        <AnimatedPlane
+          visible={false}
+        >
+          <Html>
+            <h1
+              // ref={moonrakerRef}
+              style={{
+                // position: "absolute",
+                // top: "60vh",
+                // left: "0.9em",
+                fontSize: "10vw",
+                color: "#C5C2BA",
+                // transform: `translateX(-${offset * 100}%)`,
+              }}
+            >
+              Hi
+            </h1>
+          </Html>
+        </AnimatedPlane>
+        {/* <AnimatedPlane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
           //   position={[position.x + 2, position.y - 2, position.z]}
           position={[endPosition.x + 2, endPosition.y - 20, endPosition.z]}
@@ -100,15 +152,28 @@ const MyPlane = ({ ...props }) => {
           scale={[20, 20, 20]}
           //   onClick={handlePointerEnter}
           ref={endRef}
-        />
+        /> */}
 
-        <mesh position={[13, -35, 15]}>
-          <sphereGeometry args={[10, 32, 32]} />
-          <meshStandardMaterial color="white" map={texture} />
+        {/* <mesh position={[29, -35, 10]}> */}
+        <mesh position={[140, -183, -2]} scale={5} ref={moonRef}>
+          <sphereGeometry args={[14, 32, 32]} />
+          <meshStandardMaterial
+            color="white"
+            map={moonTex}
+            //
+          />
         </mesh>
+        {/* <mesh position={[xPos, yPos, zPos]} scale={1} ref={moonRef}>
+          <sphereGeometry args={[14, 32, 32]} />
+          <meshStandardMaterial
+            map={earthTex}
+            emissive={new Color(0, 0, 0.1)}
+            //
+          />
+        </mesh> */}
       </group>
     </>
-  )
-}
+  );
+};
 
-export default MyPlane
+export default MyPlane;
