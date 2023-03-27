@@ -126,15 +126,18 @@ const MyPlane = ({ ...props }) => {
         >
           <Html>
             <motion.h1
+              className="text-9xl text-zinc-300 subpixel-antialiased"
               // ref={moonrakerRef}
-              style={{
-                // position: "absolute",
-                // top: "60vh",
-                // left: "0.9em",
-                fontSize: "10vw",
-                color: "#C5C2BA",
-                // transform: `translateX(-${offset * 100}%)`,
-              }}
+              style={
+                {
+                  // position: "absolute",
+                  // top: "60vh",
+                  // left: "0.9em",
+                  // fontSize: "10vw",
+                  // color: "#C5C2BA",
+                  // transform: `translateX(-${offset * 100}%)`,
+                }
+              }
               initial={{ opacity: 0, scale: 0.5, y: -100 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5 }}

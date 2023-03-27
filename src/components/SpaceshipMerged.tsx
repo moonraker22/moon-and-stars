@@ -43,10 +43,6 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
 
   // @ts-ignore
   const { actions } = useAnimations<GLTFActions>(animations, group);
-  console.log(
-    "🚀 ~ file: SpaceshipMerged.tsx:46 ~ Spaceship ~ actions:",
-    actions
-  );
 
   useEffect(() => {
     actions["CylinderAction"].play().fadeIn(0.5);
