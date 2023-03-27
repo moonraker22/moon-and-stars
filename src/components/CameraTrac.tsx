@@ -1,6 +1,6 @@
-import { useScroll } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
-import { createContext, useEffect, useRef, useState } from 'react'
+import { useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { createContext, useEffect, useRef, useState } from "react";
 import {
   MathUtils,
   Mesh,
@@ -8,32 +8,32 @@ import {
   Object3D,
   TubeGeometry,
   Vector3,
-} from 'three'
-import { KnotCurve } from 'three/examples/jsm/curves/CurveExtras'
+} from "three";
+import { KnotCurve } from "three/examples/jsm/curves/CurveExtras";
 
 type Props = {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const CameraTrac = ({ children }: Props) => {
   // const curve = new FigureEightPolynomialKnot()
   // const curve = new HeartCurve()
   // nice curve
-  const curve = new KnotCurve()
+  const curve = new KnotCurve();
   // const curve = new VivianiCurve()
 
-  const tubeGeo = new TubeGeometry(curve, 100, 0.9, 10, true)
-  const tubeMat = new MeshBasicMaterial({ color: 0x00ff00 })
-  tubeMat.wireframe = true
-  tubeMat.visible = false
-  const tube = new Mesh(tubeGeo, tubeMat)
+  const tubeGeo = new TubeGeometry(curve, 100, 0.9, 10, true);
+  const tubeMat = new MeshBasicMaterial({ color: 0x00ff00 });
+  tubeMat.wireframe = true;
+  tubeMat.visible = false;
+  const tube = new Mesh(tubeGeo, tubeMat);
 
-  const scroll = useScroll()
-  const tubeRef = useRef<any>()
+  const scroll = useScroll();
+  const tubeRef = useRef<any>();
 
-  const position = new Vector3()
-  const cameraTarget = new Object3D()
-  const cameraPosition = new Vector3()
+  const position = new Vector3();
+  const cameraTarget = new Object3D();
+  const cameraPosition = new Vector3();
 
   // function updateCamera({ time, looptime, camera }) {
   //   const t = (time % looptime) / looptime
@@ -65,22 +65,22 @@ const CameraTrac = ({ children }: Props) => {
 
   // function to move camera based on scroll
   function updateCamera({ time, offset, camera }) {
-    const t = (offset % 1) / 1
-    const t2 = ((offset + 0.1) % 1) / 1
+    const t = (offset % 1) / 1;
+    const t2 = ((offset + 0.1) % 1) / 1;
 
-    const pos = tubeGeo.parameters.path.getPointAt(t)
-    const pos2 = tubeGeo.parameters.path.getPointAt(t2)
+    const pos = tubeGeo.parameters.path.getPointAt(t);
+    const pos2 = tubeGeo.parameters.path.getPointAt(t2);
 
-    cameraPosition.copy(pos)
-    cameraTarget.position.copy(pos2)
-    cameraTarget.position.set(pos2.x, pos2.y, pos2.z)
-    camera.position.copy(cameraPosition)
+    cameraPosition.copy(pos);
+    cameraTarget.position.copy(pos2);
+    cameraTarget.position.set(pos2.x, pos2.y, pos2.z);
+    camera.position.copy(cameraPosition);
     // camera.lookAt(cameraTarget.position)
     camera.lookAt(
       MathUtils.lerp(camera.position.x, cameraTarget.position.x, 0.1),
       MathUtils.lerp(camera.position.y, cameraTarget.position.y, 0.1),
       MathUtils.lerp(camera.position.z, cameraTarget.position.z, 0.1)
-    )
+    );
   }
 
   useFrame(({ clock, camera }) => {
@@ -88,14 +88,14 @@ const CameraTrac = ({ children }: Props) => {
       time: clock.getElapsedTime(),
       offset: scroll.offset,
       camera,
-    })
-  })
+    });
+  });
 
-  const [tubeState, setTubeState] = useState(tubeRef.current)
+  const [tubeState, setTubeState] = useState(tubeRef.current);
 
   useEffect(() => {
-    setTubeState(tubeRef.current)
-  }, [])
+    setTubeState(tubeRef.current);
+  }, []);
 
   return (
     <>
@@ -106,9 +106,9 @@ const CameraTrac = ({ children }: Props) => {
         </group>
       </Context.Provider>
     </>
-  )
-}
-export const Context = createContext(null)
+  );
+};
+export const Context = createContext(null);
 
 // const context = {
 //   tubeRef: null,
@@ -118,4 +118,4 @@ export const Context = createContext(null)
 //   return useContext(Context)
 // }
 
-export default CameraTrac
+export default CameraTrac;

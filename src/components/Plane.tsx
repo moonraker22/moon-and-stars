@@ -1,6 +1,6 @@
-import { animated } from "@react-spring/three";
 import { Html, Plane, useScroll, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
+import { motion } from "framer-motion";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Vector3 } from "three";
 import { Context } from "./CameraTrac";
@@ -12,7 +12,7 @@ type Props = {};
 const MyPlane = ({ ...props }) => {
   const planeRef = useRef<any>();
   const endRef = useRef<any>();
-  const AnimatedPlane = animated(Plane);
+  // const AnimatedPlane = animated(Plane);
   const scroll = useScroll();
   const tubeRef = useContext(Context);
 
@@ -72,7 +72,7 @@ const MyPlane = ({ ...props }) => {
 
   useFrame(() => {
     if (moonRef) {
-      moonRef.current.rotation.x += 0.0009;
+      moonRef.current.rotation.x += 0.0013;
       // moonRef.current.rotation.y += 0.009;
     }
   });
@@ -110,7 +110,7 @@ const MyPlane = ({ ...props }) => {
       // position={[0, 0, 10]}
       // rotation={[Math.PI / 2, Math.PI / 2, 0]}
       >
-        <AnimatedPlane
+        <Plane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
           //   position={[position.x + 2, position.y - 2, position.z]}
           position={[position.x + 2, position.y - 2, position.z]}
@@ -125,7 +125,7 @@ const MyPlane = ({ ...props }) => {
           visible={false}
         >
           <Html>
-            <h1
+            <motion.h1
               // ref={moonrakerRef}
               style={{
                 // position: "absolute",
@@ -135,11 +135,14 @@ const MyPlane = ({ ...props }) => {
                 color: "#C5C2BA",
                 // transform: `translateX(-${offset * 100}%)`,
               }}
+              initial={{ opacity: 0, scale: 0.5, y: -100 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
               Hi
-            </h1>
+            </motion.h1>
           </Html>
-        </AnimatedPlane>
+        </Plane>
         {/* <AnimatedPlane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
           //   position={[position.x + 2, position.y - 2, position.z]}
@@ -157,11 +160,7 @@ const MyPlane = ({ ...props }) => {
         {/* <mesh position={[29, -35, 10]}> */}
         <mesh position={[140, -183, -2]} scale={5} ref={moonRef}>
           <sphereGeometry args={[14, 32, 32]} />
-          <meshStandardMaterial
-            color="white"
-            map={moonTex}
-            //
-          />
+          <meshStandardMaterial color="white" map={moonTex} />
         </mesh>
         {/* <mesh position={[xPos, yPos, zPos]} scale={1} ref={moonRef}>
           <sphereGeometry args={[14, 32, 32]} />

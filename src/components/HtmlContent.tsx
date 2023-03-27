@@ -1,5 +1,6 @@
 import { Scroll, useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 
 const HtmlContent = () => {
@@ -22,6 +23,7 @@ const HtmlContent = () => {
     // devRef.current.style.transform = `translate3d(${offset * 200}%, 0, 0)`;
     builtRef.current.style.transform = `translate3d(-${offset * 1000}%, 0, 0)`;
   });
+
   return (
     <Scroll html>
       {/* <h1
@@ -37,6 +39,61 @@ const HtmlContent = () => {
       >
         Hi
       </h1> */}
+      <p
+        ref={webRef}
+        style={{
+          position: "absolute",
+          top: "10vh",
+          left: "85vw",
+          fontSize: "1vw",
+          color: "#C5C2BA",
+          lineHeight: "0.9em",
+          width: "10vw",
+        }}
+      >
+        Site best viewed on desktop in landscape
+      </p>
+      {/* <p
+        ref={webRef}
+        style={{
+          // position: "absolute",
+          // top: "83vh",
+          // left: "89vw",
+          fontSize: "2vw",
+          // color: "#C5C2BA",
+          lineHeight: "0.9em",
+          // width: "10vw",
+        }}
+        className=" absolute top-[80vh] left-[90vw] h-10 w-10  text-cyan-500"
+      >
+        Scroll Down
+      </p>{" "} */}
+      <motion.svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        className="absolute top-[89vh] left-[96vw] h-10 w-10 animate-bounce text-white"
+        // initial={{
+        //   y: 0,
+        // }}
+        // animate={{
+        //   y: [0, 10, 0],
+        // }}
+        // transition={{
+        //   duration: 1,
+        //   ease: "easeInOut",
+        //   repeat: Infinity,
+        // }}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+        />
+      </motion.svg>
+
       <h1
         ref={webRef}
         style={{
@@ -68,7 +125,7 @@ const HtmlContent = () => {
         style={{
           position: "absolute",
           top: "240vh",
-          left: "75.5vw",
+          left: "65.5vw",
           fontSize: "4vw",
           color: "gray",
           textShadow: "0 0 0.5em gray",
@@ -179,7 +236,7 @@ const HtmlContent = () => {
               target="_blank"
               rel="noreferrer noopener"
             >
-              <img src="diamonhawk-home.png" alt="DiamondHawk" />
+              <img src="diamonhawk-home.webp" alt="DiamondHawk" />
             </a>
           </div>
           <p className="mt-10  p-5 text-xl text-slate-200">
@@ -337,19 +394,45 @@ const HtmlContent = () => {
           </p>
         </div>
       </div>
-      <h1
-        ref={devRef}
-        style={{
-          position: "absolute",
-          top: "1220vh",
-          left: "42.5vw",
-          fontSize: "4vw",
-          color: "#C5C2BA",
-          lineHeight: "1.0em",
-        }}
-      >
-        Thanks for stopping by! 👋
-      </h1>
+      <div className="absolute top-[1250vh] left-[50vw] flex h-full w-full flex-col items-center justify-center ">
+        <h1
+          ref={devRef}
+          style={{
+            // position: "absolute",
+            // top: "1220vh",
+            // left: "42.5vw",
+            fontSize: "4vw",
+            // color: "#C5C2BA",
+            // color: "gray",
+            textShadow: "0 0 0.5em gray",
+            lineHeight: "1.0em",
+            // color: "gradient",
+          }}
+          className="text-center text-slate-300 opacity-90"
+        >
+          Thanks for stopping by!{" "}
+          <motion.p
+            className="inline-block text-center"
+            initial={{
+              rotate: 0,
+              transformOrigin: "bottom right 60",
+            }}
+            animate={{
+              rotate: [-2, 2],
+              transformOrigin: "top right 60",
+            }}
+            transition={{
+              duration: 0.2,
+              repeat: Infinity,
+              repeatType: "reverse",
+              ease: "easeInOut",
+              damping: 10,
+            }}
+          >
+            👋
+          </motion.p>
+        </h1>
+      </div>
     </Scroll>
   );
 };

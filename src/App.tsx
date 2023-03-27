@@ -75,29 +75,30 @@ export default function App() {
         <directionalLight intensity={1.9} castShadow position={[10, 10, 5]} />
         <ambientLight intensity={0.2} />
         <color attach="background" args={["#000"]} />
-        <Stars />
         {/* <OrbitControls /> */}
+        <Stars />
         <ScrollControls pages={13} damping={1}>
-          <CameraTrac>
-            <Scroll>
-              <StarsModel data={data} range={35 * 5.5} />
-              <Selection>
-                <Effects />
+          <Selection>
+            <Effects />
 
-                <Select>
-                  {/* <Moons data={data2} range={15} /> */}
-                  {/* <SpaceshipMerged
+            <Select>
+              {/* <Moons data={data2} range={15} /> */}
+              {/* <SpaceshipMerged
                     rotation={[Math.PI, Math.PI / 4, Math.PI]}
                     position={[4, -12, 0]}
                   /> */}
-                  <Spaceship
-                    rotation={[Math.PI, Math.PI / 4, Math.PI]}
-                    // position={[4, -12, 0]}
-                    position={[23, -5, 25]}
-                    scale={[4, 4, 4]}
-                  />
-                </Select>
-              </Selection>
+              <Spaceship
+                rotation={[Math.PI, Math.PI / 4, Math.PI]}
+                // position={[4, -12, 0]}
+                // position={[23, -5, 25]}
+                scale={[4, 4, 4]}
+              />
+            </Select>
+          </Selection>
+          <CameraTrac>
+            <StarsModel data={data} range={35 * 5.5} />
+
+            <Scroll>
               {/* <Asteroid
               rotation={[Math.PI, Math.PI / 4, Math.PI]}
               position={[65, -14, 30]}
@@ -111,9 +112,8 @@ export default function App() {
               scale={[1, 1.5, 1.5]}
             /> */}
               <MyPlane args={[10, 10]} position={[0, 0, -10]} />
-
-              <Spaceshuttle scale={50} rotation-y={Math.PI} />
             </Scroll>
+            <Spaceshuttle scale={50} rotation-y={Math.PI} />
             <HtmlContent />
           </CameraTrac>
         </ScrollControls>

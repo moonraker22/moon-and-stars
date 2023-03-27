@@ -4,7 +4,6 @@ Space Shuttle Orbiter by Zoe XR [CC-BY] (https://creativecommons.org/licenses/by
 */
 
 import { useGLTF } from "@react-three/drei";
-import { useControls } from "leva";
 import { useRef } from "react";
 import * as THREE from "three";
 import { GLTF } from "three-stdlib";
@@ -43,34 +42,34 @@ export default function Spaceshuttle(props: JSX.IntrinsicElements["group"]) {
   const { nodes, materials } = useGLTF("spaceshuttle.glb") as GLTFResult;
   const ref = useRef<THREE.Group>();
 
-  const { xPos } = useControls("X", {
-    xPos: {
-      value: -337,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
-  });
+  // const { xPos } = useControls("X", {
+  //   xPos: {
+  //     value: -327,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
 
-  const { yPos } = useControls("Y", {
-    yPos: {
-      value: -565,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
-  });
+  // const { yPos } = useControls("Y", {
+  //   yPos: {
+  //     value: -717,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
 
-  const { zPos } = useControls("Z", {
-    zPos: {
-      value: 178,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
-  });
+  // const { zPos } = useControls("Z", {
+  //   zPos: {
+  //     value: 182,
+  //     min: -1000,
+  //     max: 1000,
+  //     step: 1,
+  //   },
+  // });
   return (
-    <group {...props} dispose={null} ref={ref} position={[xPos, yPos, zPos]}>
+    <group {...props} dispose={null} ref={ref} position={[-404, -189, 252]}>
       <mesh
         castShadow
         receiveShadow
