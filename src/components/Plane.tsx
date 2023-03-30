@@ -103,7 +103,7 @@ const MyPlane = ({ ...props }) => {
   //     step: 1,
   //   },
   // });
-
+  // ! TODO change plane to 3d text
   return (
     <>
       <group
@@ -113,7 +113,7 @@ const MyPlane = ({ ...props }) => {
         <Plane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
           //   position={[position.x + 2, position.y - 2, position.z]}
-          position={[position.x + 2, position.y - 2, position.z]}
+          position={[position.x + 1, position.y - 1, position.z]}
           rotation={[
             cameraRotation.x - Math.PI * 2,
             cameraRotation.y,
@@ -123,16 +123,17 @@ const MyPlane = ({ ...props }) => {
           //   onClick={handlePointerEnter}
           ref={planeRef}
           visible={false}
+          // visible={true}
         >
           <Html>
             <motion.h1
-              className="text-9xl text-zinc-300 subpixel-antialiased"
+              className="text-center text-9xl text-zinc-300 subpixel-antialiased"
               // ref={moonrakerRef}
               style={
                 {
                   // position: "absolute",
                   // top: "60vh",
-                  // left: "0.9em",
+                  // left: "50vw",
                   // fontSize: "10vw",
                   // color: "#C5C2BA",
                   // transform: `translateX(-${offset * 100}%)`,
@@ -145,6 +146,12 @@ const MyPlane = ({ ...props }) => {
               Hi
             </motion.h1>
           </Html>
+          {/* <GradientTexture
+            stops={[0, 1]} // As many stops as you want
+            colors={["aquamarine", "hotpink"]} // Colors need to match the number of stops
+            size={1024} // Size is optional, default = 1024
+            attach="map"
+          /> */}
         </Plane>
         {/* <AnimatedPlane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}

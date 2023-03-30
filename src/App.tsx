@@ -73,11 +73,11 @@ export default function App() {
     <>
       <MyCanvas>
         <directionalLight intensity={1.1} castShadow position={[10, 10, 5]} />
-        <ambientLight intensity={0.2} />
-        <color attach="background" args={["#000"]} />
+        {/* <ambientLight intensity={0.2} /> */}
+        {/* <color attach="background" args={["#000"]} /> */}
         {/* <OrbitControls /> */}
         <Stars />
-        <ScrollControls pages={13} damping={1}>
+        <ScrollControls pages={14} damping={1} maxSpeed={0.1}>
           <Selection>
             <Effects />
 
@@ -93,11 +93,11 @@ export default function App() {
                 // position={[23, -5, 25]}
                 scale={[4, 4, 4]}
               />
+              <StarsModel data={data} range={35 * 5.5} />
+              <Spaceshuttle scale={50} rotation-y={Math.PI} />
             </Select>
           </Selection>
           <CameraTrac>
-            <StarsModel data={data} range={35 * 5.5} />
-
             <Scroll>
               {/* <Asteroid
               rotation={[Math.PI, Math.PI / 4, Math.PI]}
@@ -113,7 +113,6 @@ export default function App() {
             /> */}
               <MyPlane args={[10, 10]} position={[0, 0, -10]} />
             </Scroll>
-            <Spaceshuttle scale={50} rotation-y={Math.PI} />
             <HtmlContent />
           </CameraTrac>
         </ScrollControls>

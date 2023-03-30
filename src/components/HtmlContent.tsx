@@ -14,35 +14,50 @@ const HtmlContent = () => {
   const webRef = useRef<HTMLDivElement>(null!);
   const devRef = useRef<HTMLDivElement>(null!);
   const builtRef = useRef<HTMLDivElement>(null!);
-  const chevronRef = useRef<SVGSVGElement>(null!);
+  const chevronRef = useRef<HTMLDivElement>(null!);
   // let offset = 1 - scroll.offset
-  let offset = scroll.offset;
+
+  // ! Framer Motion Values needs fixing
+  // const { scrollY } = useFramerScroll();
+  // console.log(scrollY);
+  // const scrollVelocity = useVelocity(scrollY);
+
+  // const smoothVelocity = useSpring(scrollVelocity, {
+  //   damping: 50,
+  //   stiffness: 400,
+  // });
+
+  // const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+  //   clamp: false,
+  // });
+  // console.log(
+  //   "🚀 ~ file: HtmlContent.tsx:46 ~ HtmlContent ~ velocityFactor:",
+  //   velocityFactor
+  // );
+  let offset;
+
+  // gives a range of 1-14 based on pages scrolled
+  // test = data.range(0, 1) * 14;
+
+  // console.log(data, "data");
+  let opacity;
+  let visable;
+  let scrollTest;
 
   // const { height, width } = useThree((state) => state.size)
   useFrame((state, delta) => {
     // The offset is between 0 and 1, you can apply it to your models any way you like
     offset = scroll.offset;
-    // console.log(state, "state");
-    if (offset > 0.01) {
-      chevronRef.current.style.opacity = "0";
-    } else {
-      chevronRef.current.style.opacity = "1";
-    }
-    // moonrakerRef.current.style.transform = `translate3d(${
-    //   offset * 1500
-    // }%, 0, 0)`;
-    webRef.current.style.transform = `translate3d(-${offset * 2300}%, 0, 0)`;
+
+    visable = scroll.visible(0, 1 / (scroll.pages * 5));
+
+    opacity = 1 - scroll.range(0, 1 / (scroll.pages * 5));
+    chevronRef.current.style.opacity = `${opacity}`;
+
+    webRef.current.style.transform = `translate3d(-${offset * 11000}%, 0, 0)`;
     // devRef.current.style.transform = `translate3d(${offset * 200}%, 0, 0)`;
     builtRef.current.style.transform = `translate3d(-${offset * 1000}%, 0, 0)`;
   });
-  // const handleResize = () => {
-  //   setWidth(window.innerWidth);
-  //   console.log(width);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
 
   return (
     <Scroll html>
@@ -60,9 +75,10 @@ const HtmlContent = () => {
         Hi
       </h1> */}
       <p
-        ref={webRef}
         style={{
-          left: width - 80,
+          // left: width - 80,
+          left: 3,
+
           fontSize: "1vw",
           lineHeight: "0.9em",
         }}
@@ -85,22 +101,54 @@ const HtmlContent = () => {
       >
         Scroll Down
       </p>{" "} */}
-      <motion.svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
+      <motion.p className="scroll-text absolute top-[5vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        s
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[12vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        c
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[19vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        r
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[26vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        0
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[33vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        l
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[40vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        l
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[52vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        d
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[60vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        o
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[68vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        w
+      </motion.p>
+      <motion.p className="scroll-text absolute top-[77vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+        n
+      </motion.p>
+      <motion.div
         className="absolute top-[89vh] left-[94vw] h-10 w-10 animate-bounce text-zinc-300"
         ref={chevronRef}
       >
-        <path
-          // stroke-linecap="round"
-          // stroke-linejoin="round"
-          d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
-        />
-      </motion.svg>
-
+        <motion.svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+        >
+          <path
+            // stroke-linecap="round"
+            // stroke-linejoin="round"
+            d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5"
+          />
+        </motion.svg>
+      </motion.div>
       <h1
         ref={webRef}
         className="shadow-gray absolute top-[100vh] left-[75vw] h-10 w-10 text-center text-8xl  leading-none text-zinc-300"
@@ -116,6 +164,7 @@ const HtmlContent = () => {
       <p
         ref={builtRef}
         className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
+        // className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
       </p>
@@ -124,37 +173,39 @@ const HtmlContent = () => {
           left: `${width > 768 ? rightBox : "2vw"}`,
           textShadow: "0 0 0.5em gray",
         }}
-        className="project top-[350vh] min-w-[450px] border-cyan-200  text-cyan-500 shadow-cyan-500/50"
+        className="project top-[350vh]  border-cyan-200  shadow-cyan-500/50"
       >
-        <div className="shadow-cyan m-5  w-96 p-5 text-6xl font-bold">
+        <div className="shadow-cyan w-100 mb-5  mt-5 p-2 text-6xl font-bold  text-cyan-500">
           Pay Tracker
         </div>
-        <p className="m-5  p-5 text-2xl text-slate-200">
+        <p className="mb-5 w-96  p-5 text-2xl text-slate-200">
           An app I built using React, TypeScript, Firebase, and Chakra UI. It
           allows drivers to calculate pay, miles and time off, and stores it in
           a database.
         </p>
-        <div className="m-3">
-          <a
-            href="https://payroll-spa.web.app//"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <img
-              src="pay-animated.png"
-              // Cloudinary URL
-              // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
-              alt="Pay Tracker"
-            />
-          </a>
-        </div>
-        <p className="m-5  p-5 text-xl text-slate-200">
+
+        {/* <a
+          href="https://payroll-spa.web.app//"
+          target="_blank"
+          rel="noreferrer noopener"
+          className=""
+        > */}
+        <img
+          loading="lazy"
+          src="pay-animated.png"
+          // Cloudinary URL
+          // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
+          alt="Pay Tracker"
+          className="mb-5 w-96 object-cover p-1"
+        />
+        {/* </a> */}
+        <p className="mb-5  p-5 text-xl text-slate-200">
           It's in use and on the web{" "}
           <a href="/" className="text-cyan-400">
             here
           </a>
         </p>
-        <p className="mx-3  p-5 text-xl text-slate-200">
+        <p className="mmb-3  p-5 text-xl text-slate-200">
           Check out the code on GitHub:
           <a
             href=" https://github.com/moonraker22/payroll-spa"
@@ -165,7 +216,7 @@ const HtmlContent = () => {
               width="16"
               height="16"
               fill="currentColor"
-              className=" mx-auto my-3 h-10 w-10"
+              className=" mx-auto mb-3 h-10 w-10"
               viewBox="0 0 16 16"
             >
               <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
@@ -195,7 +246,7 @@ const HtmlContent = () => {
           // borderRadius: "5px",
           // opacity: "0.9",
         }}
-        className="project min-w-[450px] border-amber-200  text-yellow-400 shadow-amber-500/50"
+        className="project  border-amber-200  text-yellow-400 shadow-amber-500/50"
       >
         <p className="m-5  p-5 text-5xl font-bold">DiamondHawk</p>
         <p className="m-5  p-5 text-2xl text-slate-200">
@@ -208,7 +259,7 @@ const HtmlContent = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img src="diamonhawk-home.webp" alt="DiamondHawk" />
+            <img loading="lazy" src="diamonhawk-home.webp" alt="DiamondHawk" />
           </a>
         </div>
         <p className="mt-10  p-5 text-xl text-slate-200">
@@ -285,7 +336,7 @@ const HtmlContent = () => {
         // ref={inspRef}
         style={{
           // position: "absolute",
-          top: "950vh",
+          top: "1050vh",
           left: "2.5vw",
           fontSize: "4vw",
           // color: "gray",
@@ -360,7 +411,12 @@ const HtmlContent = () => {
           Check out my projects
         </p>
       </div>
-      <div className="absolute top-[1250vh] left-[50vw] flex h-full w-full flex-col items-center justify-center ">
+      <div
+        style={{
+          transform: "translateY(100vh)",
+        }}
+        className="absolute top-[1250vh] left-[50vw] flex h-full w-full  flex-col items-center justify-center"
+      >
         <h1
           ref={devRef}
           style={{

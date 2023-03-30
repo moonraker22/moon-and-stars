@@ -8,7 +8,7 @@
 
 @layer components {
   .project {
-    @apply absolute  mx-auto flex flex-col items-center space-x-4 rounded-xl border-2  bg-transparent p-6 text-center   subpixel-antialiased opacity-90 transition duration-500 ease-in-out hover:scale-105 hover:shadow-2xl;
+    @apply absolute   items-center space-x-4 rounded-xl border-2  bg-transparent p-3 text-center   subpixel-antialiased opacity-90 transition duration-500 ease-in-out hover:scale-105 hover:shadow-2xl;
   }
   .project-header {
     @apply absolute inset-x-0 top-0 min-w-full rounded-xl bg-transparent;
@@ -33,4 +33,8 @@
 
 .shadow-purple {
   text-shadow: #f0f 1px 0 10px;
+}
+
+.scroll-text {
+  @apply opacity-30;
 }
