@@ -1,4 +1,4 @@
-import { Loader, Preload } from "@react-three/drei";
+import { AdaptiveDpr, Loader, Preload } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 
@@ -8,7 +8,8 @@ const MyCanvas = ({ children }) => {
   return (
     <>
       <Suspense>
-        <Canvas camera={{ fov: 65 }}>
+        <Canvas camera={{ fov: 65 }} gl={{ antialias: true }} dpr={[1, 2]}>
+          <AdaptiveDpr pixelated />
           <Preload all />
           {children}
         </Canvas>

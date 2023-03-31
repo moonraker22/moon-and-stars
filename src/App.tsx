@@ -1,4 +1,4 @@
-import { Scroll, ScrollControls, Select, Stars } from "@react-three/drei";
+import { Scroll, ScrollControls, Stars } from "@react-three/drei";
 import { Perf } from "r3f-perf";
 import StarsModel from "./components/StarsModel";
 // import Star from "./Star";
@@ -43,12 +43,11 @@ import { data } from "./store";
 //     </group>
 //   )
 // }
-import { Selection } from "@react-three/postprocessing";
+import Earth from "./components/Earth";
 import Effects from "./components/Effects";
 import HtmlContent from "./components/HtmlContent";
 import MyPlane from "./components/Plane";
 import Spaceship from "./components/SpaceshipMerged";
-import Spaceshuttle from "./components/Spaceshuttle";
 
 export default function App() {
   // let { range } = useControls(
@@ -72,51 +71,32 @@ export default function App() {
   return (
     <>
       <MyCanvas>
-        <directionalLight intensity={1.1} castShadow position={[10, 10, 5]} />
-        {/* <ambientLight intensity={0.2} /> */}
-        {/* <color attach="background" args={["#000"]} /> */}
-        {/* <OrbitControls /> */}
-        <Stars />
+        <directionalLight intensity={1.1} castShadow position={[10, 10, 0]} />
         <ScrollControls pages={14} damping={1} maxSpeed={0.1}>
-          <Selection>
-            <Effects />
-
-            <Select>
-              {/* <Moons data={data2} range={15} /> */}
-              {/* <SpaceshipMerged
-                    rotation={[Math.PI, Math.PI / 4, Math.PI]}
-                    position={[4, -12, 0]}
-                  /> */}
-              <Spaceship
-                rotation={[Math.PI, Math.PI / 4, Math.PI]}
-                // position={[4, -12, 0]}
-                // position={[23, -5, 25]}
-                scale={[4, 4, 4]}
-              />
-              <StarsModel data={data} range={35 * 5.5} />
-              <Spaceshuttle scale={50} rotation-y={Math.PI} />
-            </Select>
-          </Selection>
           <CameraTrac>
+            <Stars />
+            {/* <Selection> */}
+            <Effects />
+            {/* <Select enabled> */}
+            <Spaceship
+              rotation={[Math.PI, Math.PI / 4, Math.PI]}
+              // position={[4, -12, 0]}
+              // position={[23, -5, 25]}
+              scale={[4, 4, 4]}
+            />
+            {/* <Spaceshuttle scale={50} rotation-y={Math.PI} /> */}
+            {/* </Select> */}
+            <StarsModel data={data} range={35 * 5.5} />
+            {/* </Selection> */}
             <Scroll>
-              {/* <Asteroid
-              rotation={[Math.PI, Math.PI / 4, Math.PI]}
-              position={[65, -14, 30]}
-              scale={3.5}
-            /> */}
-              {/* <Images /> */}
-
-              {/* <Asteroid
-              rotation={[Math.PI, Math.PI / 4, Math.PI]}
-              position={[-15, -3, 20]}
-              scale={[1, 1.5, 1.5]}
-            /> */}
-              <MyPlane args={[10, 10]} position={[0, 0, -10]} />
+              <HtmlContent />
             </Scroll>
-            <HtmlContent />
+            <MyPlane args={[10, 10]} position={[0, 0, -10]} />
           </CameraTrac>
+          <Earth position={[0, 0, 350]} rotation-x={Math.PI} />
+
+          <Perf position={"top-left"} />
         </ScrollControls>
-        <Perf position={"top-left"} />
       </MyCanvas>
     </>
   );

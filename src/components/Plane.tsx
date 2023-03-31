@@ -1,8 +1,8 @@
-import { Html, Plane, useScroll, useTexture } from "@react-three/drei";
+import { useScroll, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { motion } from "framer-motion";
+import { useControls } from "leva";
 import { useContext, useEffect, useRef, useState } from "react";
-import { Vector3 } from "three";
+import { Color, Vector3 } from "three";
 import { Context } from "./CameraTrac";
 
 type Props = {};
@@ -77,32 +77,33 @@ const MyPlane = ({ ...props }) => {
     }
   });
 
-  // const { xPos } = useControls("X", {
-  //   xPos: {
-  //     value: 140,
-  //     min: -1000,
-  //     max: 1000,
-  //     step: 1,
-  //   },
-  // });
+  const { xPos } = useControls("X", {
+    xPos: {
+      value: 7,
+      min: -1000,
+      max: 1000,
+      step: 1,
+    },
+  });
 
-  // const { yPos } = useControls("Y", {
-  //   yPos: {
-  //     value: -183,
-  //     min: -1000,
-  //     max: 1000,
-  //     step: 1,
-  //   },
-  // });
+  const { yPos } = useControls("Y", {
+    yPos: {
+      value: -109,
+      min: -1000,
+      max: 1000,
+      step: 1,
+    },
+  });
 
-  // const { zPos } = useControls("Z", {
-  //   zPos: {
-  //     value: -2,
-  //     min: -1000,
-  //     max: 1000,
-  //     step: 1,
-  //   },
-  // });
+  const { zPos } = useControls("Z", {
+    zPos: {
+      value: 119,
+      min: -1000,
+      max: 1000,
+      step: 1,
+    },
+  });
+
   // ! TODO change plane to 3d text
   return (
     <>
@@ -110,16 +111,33 @@ const MyPlane = ({ ...props }) => {
       // position={[0, 0, 10]}
       // rotation={[Math.PI / 2, Math.PI / 2, 0]}
       >
-        <Plane
-          //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
-          //   position={[position.x + 2, position.y - 2, position.z]}
-          position={[position.x + 1, position.y - 1, position.z]}
+        {/* <Billboard
+          follow={true}
+          lockX={false}
+          lockY={false}
+          lockZ={false}
+          position={[position.x - 2, position.y, position.z]}
+        >
+          <mesh scale={4}>
+            <planeGeometry args={[2, 2]} />
+            <meshBasicMaterial color={"white"}>
+              <GradientTexture
+                stops={[0, 1]} // As many stops as you want
+                colors={["tomato", "dodgerblue"]} // Colors need to match the number of stops
+                size={1024} // Size is optional, default = 1024
+              />
+            </meshBasicMaterial>
+          </mesh>
+        </Billboard> */}
+        {/* <Plane
+ 
+          position={[position.x - 2, position.y - 1, position.z]}
           rotation={[
             cameraRotation.x - Math.PI * 2,
             cameraRotation.y,
             cameraRotation.z,
           ]}
-          scale={[2, 1, 1]}
+          scale={[2, 4, 1]}
           //   onClick={handlePointerEnter}
           ref={planeRef}
           visible={false}
@@ -128,17 +146,7 @@ const MyPlane = ({ ...props }) => {
           <Html>
             <motion.h1
               className="text-center text-9xl text-zinc-300 subpixel-antialiased"
-              // ref={moonrakerRef}
-              style={
-                {
-                  // position: "absolute",
-                  // top: "60vh",
-                  // left: "50vw",
-                  // fontSize: "10vw",
-                  // color: "#C5C2BA",
-                  // transform: `translateX(-${offset * 100}%)`,
-                }
-              }
+           
               initial={{ opacity: 0, scale: 0.5, y: -100 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -146,13 +154,8 @@ const MyPlane = ({ ...props }) => {
               Hi
             </motion.h1>
           </Html>
-          {/* <GradientTexture
-            stops={[0, 1]} // As many stops as you want
-            colors={["aquamarine", "hotpink"]} // Colors need to match the number of stops
-            size={1024} // Size is optional, default = 1024
-            attach="map"
-          /> */}
-        </Plane>
+     
+        </Plane> */}
         {/* <AnimatedPlane
           //   position={[-1.2246467991473532e-14, 60, -1.469576158976824e-14]}
           //   position={[position.x + 2, position.y - 2, position.z]}
@@ -168,9 +171,14 @@ const MyPlane = ({ ...props }) => {
         /> */}
 
         {/* <mesh position={[29, -35, 10]}> */}
-        <mesh position={[140, -183, -2]} scale={5} ref={moonRef}>
-          <sphereGeometry args={[14, 32, 32]} />
-          <meshStandardMaterial color="white" map={moonTex} />
+        <mesh position={[130, -61, 244]} scale={7} ref={moonRef}>
+          {/* <mesh position={[xPos, yPos, zPos]} scale={4} ref={moonRef}> */}
+
+          <sphereGeometry args={[14, 64, 64]} />
+          <meshStandardMaterial
+            color={new Color(3.0, 3.0, 3.0)}
+            map={moonTex}
+          />
         </mesh>
         {/* <mesh position={[xPos, yPos, zPos]} scale={1} ref={moonRef}>
           <sphereGeometry args={[14, 32, 32]} />

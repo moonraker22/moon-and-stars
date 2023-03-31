@@ -51,8 +51,8 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
   // mesh emission material
   const material = new THREE.MeshStandardMaterial({
     color: new THREE.Color(1.5, 1.5, 0.3),
-    emissive: new THREE.Color(1.8, 0, 0.3), // WHITE emissive COLOR
-    emissiveIntensity: 2, // Intensity of emissive COLOR
+    emissive: new THREE.Color(1.7, 1.2, 1), // WHITE emissive COLOR
+    emissiveIntensity: 4, // Intensity of emissive COLOR
   });
   material.toneMapped = false;
   material.needsUpdate = true;
@@ -98,7 +98,8 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
   //     max: 1000,
   //     step: 1,
   //   },
-  // });
+  //
+  // // });
   return (
     <group ref={group} {...props} dispose={null} position={[40, -16, 25]}>
       <group name="Scene">
