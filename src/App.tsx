@@ -7,6 +7,7 @@ import "./App.css";
 // import Plane from './components/Plane'
 import CameraTrac from "./components/CameraTrac";
 import MyCanvas from "./components/MyCanvas";
+import TextIntro from "./components/TextIntro";
 import { data } from "./store";
 
 // const Torus = () => {
@@ -94,7 +95,7 @@ export default function App() {
             <MyPlane args={[10, 10]} position={[0, 0, -10]} />
           </CameraTrac>
           <Earth position={[0, 0, 350]} rotation-x={Math.PI} />
-
+          <TextIntro />
           <Perf position={"top-left"} />
         </ScrollControls>
       </MyCanvas>

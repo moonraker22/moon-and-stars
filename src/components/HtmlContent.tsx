@@ -54,9 +54,9 @@ const HtmlContent = () => {
     opacity = 1 - scroll.range(0, 1 / (scroll.pages * 5));
     chevronRef.current.style.opacity = `${opacity}`;
 
-    webRef.current.style.transform = `translate3d(-${offset * 11000}%, 0, 0)`;
+    // webRef.current.style.transform = `translate3d(-${offset * 11000}%, 0, 0)`;
     // devRef.current.style.transform = `translate3d(${offset * 200}%, 0, 0)`;
-    builtRef.current.style.transform = `translate3d(-${offset * 1000}%, 0, 0)`;
+    // builtRef.current.style.transform = `translate3d(-${offset * 1000}%, 0, 0)`;
   });
 
   return (
@@ -149,12 +149,12 @@ const HtmlContent = () => {
           />
         </motion.svg>
       </motion.div>
-      <h1
+      {/* <h1
         ref={webRef}
         className="shadow-gray absolute top-[100vh] left-[75vw] h-10 w-10 text-center text-8xl  leading-none text-zinc-300"
       >
         I'm Zac
-      </h1>
+      </h1> */}
       <h3
         ref={devRef}
         className="shadow-gray absolute top-[120vh] left-[3.5vw] h-10 w-10 text-center  text-7xl leading-none text-zinc-400"
@@ -192,7 +192,8 @@ const HtmlContent = () => {
         > */}
         <img
           loading="lazy"
-          src="pay-animated.png"
+          src="payroll-gif.gif"
+          // src="pay-animated.png"
           // Cloudinary URL
           // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
           alt="Pay Tracker"
@@ -259,7 +260,7 @@ const HtmlContent = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img loading="lazy" src="diamonhawk-home.webp" alt="DiamondHawk" />
+            <img loading="lazy" src="diamondhawk-gif.gif" alt="DiamondHawk" />
           </a>
         </div>
         <p className="mt-10  p-5 text-xl text-slate-200">

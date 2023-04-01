@@ -1,6 +1,5 @@
 import { useScroll, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { useControls } from "leva";
 import { useContext, useEffect, useRef, useState } from "react";
 import { Color, Vector3 } from "three";
 import { Context } from "./CameraTrac";
@@ -75,33 +74,6 @@ const MyPlane = ({ ...props }) => {
       moonRef.current.rotation.x += 0.0013;
       // moonRef.current.rotation.y += 0.009;
     }
-  });
-
-  const { xPos } = useControls("X", {
-    xPos: {
-      value: 7,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
-  });
-
-  const { yPos } = useControls("Y", {
-    yPos: {
-      value: -109,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
-  });
-
-  const { zPos } = useControls("Z", {
-    zPos: {
-      value: 119,
-      min: -1000,
-      max: 1000,
-      step: 1,
-    },
   });
 
   // ! TODO change plane to 3d text

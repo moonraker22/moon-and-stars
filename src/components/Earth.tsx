@@ -1,9 +1,14 @@
 import { useTexture } from "@react-three/drei";
-import { Color, Mesh } from "three";
+import { AdditiveBlending, BackSide, Color, Mesh, Vector3 } from "three";
 
 // import earthDay from "../assets/images/earth-day.jpg";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
+
+import atmoFrag from "../assets/glsl/atmoFrag.glsl?raw";
+import atmoVert from "../assets/glsl/atmoVert.glsl?raw";
+import earthFrag from "../assets/glsl/earthFrag.glsl?raw";
+import earthVert from "../assets/glsl/earthVert.glsl?raw";
 
 const Earth = ({ ...props }) => {
   const ref = useRef<Mesh>(null!);
@@ -16,7 +21,7 @@ const Earth = ({ ...props }) => {
 
   return (
     <group {...props}>
-      <mesh position-z={-20} position-x={-1} position-y={-3}>
+      {/* <mesh position-z={-20} position-x={-1} position-y={-3}>
         <sphereGeometry args={[21.75, 32, 32]} />
         <meshStandardMaterial
           emissive={"dodgerblue"}
@@ -26,17 +31,42 @@ const Earth = ({ ...props }) => {
       </mesh>
       <mesh ref={ref}>
         <sphereGeometry args={[20, 32, 32]} />
-        {/* <shaderMaterial
+     
+        <meshStandardMaterial
+          // emissiveMap={emmisiveMap}
+          // emissiveIntensity={0.07}
+          // emissive={"dodgerblue"}
+          map={earthDay}
+          color={new Color(2.0, 2.0, 2.0)}
+        />
+      </mesh> */}
+      {/* <mesh position-z={-20} position-x={-1} position-y={-3}> */}
+      <mesh scale={1.15} position-z={-20} position-x={-1} position-y={-3}>
+        <sphereGeometry args={[20, 32, 32]} />
+        <shaderMaterial
+          uniforms={{
+            uDayTexture: { value: earthDay },
+          }}
+          vertexShader={atmoVert}
+          fragmentShader={atmoFrag}
+          blending={AdditiveBlending}
+          transparent={true}
+          side={BackSide}
+        />
+      </mesh>
+      <mesh ref={ref}>
+        <sphereGeometry args={[20, 32, 32]} />
+        <shaderMaterial
           uniforms={{
             uDayTexture: { value: earthDay },
             uNightTexture: { value: earthDay },
             uSpecularTexture: { value: earthDay },
-            uSunDirection: { value: new Vector3(1.0, 0.0, 0.0) },
+            uSunDirection: { value: new Vector3(10, 10, 0) },
             uScale: { value: 1.0 },
           }}
           vertexShader={earthVert}
           fragmentShader={earthFrag}
-        /> */}
+        />
         <meshStandardMaterial
           // emissiveMap={emmisiveMap}
           // emissiveIntensity={0.07}
