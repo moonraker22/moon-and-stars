@@ -41,7 +41,7 @@ const Earth = ({ ...props }) => {
         />
       </mesh> */}
       {/* <mesh position-z={-20} position-x={-1} position-y={-3}> */}
-      <mesh scale={1.15} position-z={-20} position-x={-1} position-y={-3}>
+      <mesh scale={1.1} position-z={-20} position-x={-1} position-y={-3}>
         <sphereGeometry args={[20, 32, 32]} />
         <shaderMaterial
           uniforms={{

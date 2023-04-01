@@ -39,6 +39,14 @@ const TextOutro = (texture, ...props) => {
   const textRef2 = useRef<Group>(null!);
 
   const width = useThree((state) => state.size.width);
+  const scale = width < 600 ? 1 : 1.1;
+  // const xPosition = width < 600 ? 104 : 104;
+  // const yPosition = width < 600 ? -44 : -23;
+  // const zPosition = width < 600 ? 19 : 14;
+  // const xPosition = width < 600 ? 104 : 104;
+  // const yPosition = width < 600 ? -44 : -44;
+  // const zPosition = width < 600 ? 19 : 19;
+  // const position = new Vector3(xPosition, yPosition, zPosition);
 
   const [matcapTexture] = useMatcapTexture("515151_DCDCDC_B7B7B7_9B9B9B", 256);
   const scroll = useScroll();
@@ -58,12 +66,7 @@ const TextOutro = (texture, ...props) => {
   });
   return (
     <>
-      <group
-        {...props}
-        position={[103, -23, 14]}
-        scale={width / 1000}
-        ref={textRef2}
-      >
+      <group {...props} position={[104, -44, 19]} scale={scale} ref={textRef2}>
         <Billboard>
           <Text3D
             ref={textRef1}

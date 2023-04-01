@@ -215,12 +215,4 @@ const CameraTrac = ({ children }: Props) => {
 };
 export const Context = createContext(null);
 
-// const context = {
-//   tubeRef: null,
-// }
-
-// export const useTube = () => {
-//   return useContext(Context)
-// }
-
 export default CameraTrac;

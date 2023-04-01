@@ -7,6 +7,8 @@ const HtmlContent = () => {
   // const [width, setWidth] = useState(window.innerWidth);
   const width = useThree((state) => state.size.width);
   const rightBox = `${width - 470}px`;
+  // const scrollText = width < 600 ? "500px" : "94.5vw";
+  const scrollText = width > 600 ? "94.5vw" : "500px";
   const leftBox = "20px";
 
   const scroll = useScroll();
@@ -42,7 +44,7 @@ const HtmlContent = () => {
   // console.log(data, "data");
   let opacity;
   let visable;
-  let scrollTest;
+  // let scrollTest;
 
   // const { height, width } = useThree((state) => state.size)
   useFrame((state, delta) => {
@@ -101,38 +103,91 @@ const HtmlContent = () => {
       >
         Scroll Down
       </p>{" "} */}
-      <motion.p className="scroll-text absolute top-[5vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[6vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         s
       </motion.p>
-      <motion.p className="scroll-text absolute top-[12vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[13vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         c
       </motion.p>
-      <motion.p className="scroll-text absolute top-[19vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[20vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         r
       </motion.p>
-      <motion.p className="scroll-text absolute top-[26vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[27vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         0
       </motion.p>
-      <motion.p className="scroll-text absolute top-[33vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[34vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         l
       </motion.p>
-      <motion.p className="scroll-text absolute top-[40vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[41vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         l
       </motion.p>
-      <motion.p className="scroll-text absolute top-[52vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[53vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         d
       </motion.p>
-      <motion.p className="scroll-text absolute top-[60vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[61vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         o
       </motion.p>
-      <motion.p className="scroll-text absolute top-[68vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className="scroll-text absolute top-[69vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+      >
         w
       </motion.p>
-      <motion.p className="scroll-text absolute top-[77vh] left-[94.5vw] h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200">
+      <motion.p
+        style={{
+          left: width - 40,
+        }}
+        className={`scroll-text absolute top-[78vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200`}
+      >
         n
       </motion.p>
       <motion.div
-        className="absolute top-[89vh] left-[94vw] h-10 w-10 animate-bounce text-zinc-300"
+        style={{
+          left: width - 45,
+        }}
+        className="absolute top-[89vh]  h-10 w-10 animate-bounce text-zinc-300"
         ref={chevronRef}
       >
         <motion.svg
@@ -161,23 +216,19 @@ const HtmlContent = () => {
       >
         I build stuff for the web
       </h3>
-      <p
+      <h3
+        style={{
+          left: width > 768 ? width - 250 : "2vw",
+        }}
         ref={builtRef}
         className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[83.5vw] text-center  text-6xl text-zinc-300 shadow"
         // className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
-      </p>
+      </h3>
       <div
         style={{
-          left: `${width > 768 ? rightBox : "2vw"}`,
-          // textShadow: "0 0 0.5em gray",
-          // background: "rgba(255, 255, 255, 0.24)",
-          // borderRadius: "16px",
-          // boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-          // backdropFilter: "blur(4.7px)",
-          // WebkitBackdropFilter: "blur(4.7px)",
-          // border: "1px solid rgba(255, 255, 255, 0.6)",
+          left: width > 768 ? rightBox : width / 2 - 213,
         }}
         className="glass project top-[450vh]  border-cyan-200  shadow-cyan-500/50"
       >
@@ -190,22 +241,22 @@ const HtmlContent = () => {
           off, and stores it in a database.
         </p>
 
-        {/* <a
+        <a
           href="https://payroll-spa.web.app//"
           target="_blank"
           rel="noreferrer noopener"
           className=""
-        > */}
-        <img
-          loading="lazy"
-          src="payroll-gif.gif"
-          // src="pay-animated.png"
-          // Cloudinary URL
-          // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
-          alt="Pay Tracker"
-          className="mb-5 w-96 object-cover p-1"
-        />
-        {/* </a> */}
+        >
+          <img
+            loading="lazy"
+            src="payroll-gif.gif"
+            width={420}
+            // Cloudinary URL
+            // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
+            alt="Pay Tracker"
+            className="mx-auto mb-5 w-96 object-cover p-1"
+          />
+        </a>
         <p className="mb-5  p-5 text-xl text-slate-200">
           It's in use and on the web{" "}
           <a href="/" className="text-cyan-400">
@@ -242,7 +293,7 @@ const HtmlContent = () => {
         style={{
           position: "absolute",
           top: "650vh",
-          left: "2.5vw",
+          left: width > 768 ? rightBox : width / 2 - 240,
           fontSize: "4vw",
           // color: "gray",
           textShadow: "0 0 0.5em gray",
@@ -266,7 +317,12 @@ const HtmlContent = () => {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <img loading="lazy" src="diamondhawk-gif.gif" alt="DiamondHawk" />
+            <img
+              width={420}
+              loading="lazy"
+              src="diamondhawk-gif.gif"
+              alt="DiamondHawk"
+            />
           </a>
         </div>
         <p className="mt-10  p-5 text-xl text-slate-200">
@@ -281,7 +337,7 @@ const HtmlContent = () => {
         style={{
           // position: "absolute",
           top: "850vh",
-          left: `${width > 768 ? rightBox : "2vw"}`,
+          left: width > 768 ? rightBox : width / 2 - 225,
 
           fontSize: "4vw",
           // color: "gray",
@@ -343,7 +399,8 @@ const HtmlContent = () => {
         style={{
           // position: "absolute",
           top: "1150vh",
-          left: "2.5vw",
+          left: width > 768 ? rightBox : width / 2 - 210,
+
           // fontSize: "4vw",
           // color: "gray",
           // textShadow: "0 0 0.5em gray",

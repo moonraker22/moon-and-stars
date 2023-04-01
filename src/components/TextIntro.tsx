@@ -6,7 +6,7 @@ import {
 } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
-import { Mesh } from "three";
+import { Mesh, Vector3 } from "three";
 
 const TextIntro = (texture, ...props) => {
   //   const { xPos } = useControls("X", {
@@ -38,6 +38,12 @@ const TextIntro = (texture, ...props) => {
   const textRef = useRef<Mesh>(null!);
 
   const width = useThree((state) => state.size.width);
+  const xPosition = width < 600 ? 41 : 62;
+  const yPosition = width < 600 ? -31 : -4;
+  const zPosition = width < 600 ? 10 : -8;
+  const position = new Vector3(xPosition, yPosition, zPosition);
+
+  //
 
   const [matcapTexture] = useMatcapTexture("515151_DCDCDC_B7B7B7_9B9B9B", 256);
   const scroll = useScroll();
@@ -50,7 +56,7 @@ const TextIntro = (texture, ...props) => {
   });
   return (
     <>
-      <group {...props} position={[62, -4, -8]} scale={width / 1000}>
+      <group {...props} position={position} scale={width / 1000}>
         <Billboard>
           <Text3D
             ref={textRef}
