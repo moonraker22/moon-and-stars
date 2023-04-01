@@ -6,7 +6,7 @@ import { useRef } from "react";
 const HtmlContent = () => {
   // const [width, setWidth] = useState(window.innerWidth);
   const width = useThree((state) => state.size.width);
-  const rightBox = `${width - 500}px`;
+  const rightBox = `${width - 470}px`;
   const leftBox = "20px";
 
   const scroll = useScroll();
@@ -157,13 +157,13 @@ const HtmlContent = () => {
       </h1> */}
       <h3
         ref={devRef}
-        className="shadow-gray absolute top-[120vh] left-[3.5vw] h-10 w-10 text-center  text-7xl leading-none text-zinc-400"
+        className="build-text shadow-gray absolute top-[120vh] left-[3.5vw] h-10 w-10 text-center  text-7xl leading-none text-zinc-400"
       >
         I build stuff for the web
       </h3>
       <p
         ref={builtRef}
-        className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
+        className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[83.5vw] text-center  text-6xl text-zinc-300 shadow"
         // className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
@@ -171,17 +171,23 @@ const HtmlContent = () => {
       <div
         style={{
           left: `${width > 768 ? rightBox : "2vw"}`,
-          textShadow: "0 0 0.5em gray",
+          // textShadow: "0 0 0.5em gray",
+          // background: "rgba(255, 255, 255, 0.24)",
+          // borderRadius: "16px",
+          // boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
+          // backdropFilter: "blur(4.7px)",
+          // WebkitBackdropFilter: "blur(4.7px)",
+          // border: "1px solid rgba(255, 255, 255, 0.6)",
         }}
-        className="project top-[350vh]  border-cyan-200  shadow-cyan-500/50"
+        className="glass project top-[450vh]  border-cyan-200  shadow-cyan-500/50"
       >
         <div className="shadow-cyan w-100 mb-5  mt-5 p-2 text-6xl font-bold  text-cyan-500">
           Pay Tracker
         </div>
         <p className="mb-5 w-96  p-5 text-2xl text-slate-200">
           An app I built using React, TypeScript, Firebase, and Chakra UI. It
-          allows drivers to calculate pay, miles and time off, and stores it in
-          a database.
+          allows drivers from a local company to calculate pay, miles and time
+          off, and stores it in a database.
         </p>
 
         {/* <a
@@ -235,7 +241,7 @@ const HtmlContent = () => {
         // ref={inspRef}
         style={{
           position: "absolute",
-          top: "550vh",
+          top: "650vh",
           left: "2.5vw",
           fontSize: "4vw",
           // color: "gray",
@@ -247,7 +253,7 @@ const HtmlContent = () => {
           // borderRadius: "5px",
           // opacity: "0.9",
         }}
-        className="project  border-amber-200  text-yellow-400 shadow-amber-500/50"
+        className="glass project  border-amber-200  text-yellow-400 shadow-amber-500/50"
       >
         <p className="m-5  p-5 text-5xl font-bold">DiamondHawk</p>
         <p className="m-5  p-5 text-2xl text-slate-200">
@@ -274,7 +280,7 @@ const HtmlContent = () => {
         // ref={inspRef}
         style={{
           // position: "absolute",
-          top: "750vh",
+          top: "850vh",
           left: `${width > 768 ? rightBox : "2vw"}`,
 
           fontSize: "4vw",
@@ -287,31 +293,24 @@ const HtmlContent = () => {
           // borderRadius: "5px",
           // opacity: "0.9",
         }}
-        className="project min-w-[450px] border-teal-400 text-teal-300 shadow-teal-500/50"
+        className="glass project min-w-[450px] border-teal-400 text-teal-300 shadow-teal-500/50"
       >
-        <p className="m-5  p-5 text-5xl font-bold">Some Other Projects</p>
-
-        <p className="m-5  p-5 text-xl text-slate-200">
-          <a
-            href="https://portal-omega-ten.vercel.app"
-            className="text-teal-300"
-          >
-            Portal :{" "}
-          </a>{" "}
-          A scene built with blender and react three fiber
-        </p>
+        <p className="mb-5  p-5 text-5xl font-bold">Some Other Projects</p>
         <a href="/" className="text-teal-300">
           <img
             src="https://github.com/moonraker22/my-three-js-journey/blob/main/38-importing-and-optimizing-the-scene/38-vite/public/resources/portal_readme.jpg?raw=true"
             alt="Portal"
-            className=" mx-auto w-96 object-cover"
+            className=" mx-auto mb-5 w-96 object-cover"
           />
-        </a>
-        <p className="m-5  p-5 text-xl text-slate-200">
-          <a href="https://marble-madness.vercel.app" className="text-teal-300">
-            Marble Madness :{" "}
-          </a>{" "}
-          A game built with blender and react three fiber
+        </a>{" "}
+        <p className="m mb-1  p-2 text-xl text-slate-200">
+          <a
+            href="https://portal-omega-ten.vercel.app"
+            className="text-teal-300"
+          >
+            Portal :
+          </a>
+          A scene built with blender and react three fiber
         </p>
         <a href="/" className="text-teal-300">
           <img
@@ -320,13 +319,19 @@ const HtmlContent = () => {
             className=" mx-auto w-96 object-cover"
           />
         </a>
-        <p className="mt-3  p-5 text-xl text-slate-200">
+        <p className="mb-3  p-3 text-xl text-slate-200">
+          <a href="https://marble-madness.vercel.app" className="text-teal-300">
+            Marble Madness :{" "}
+          </a>{" "}
+          A game built with blender and react three fiber
+        </p>
+        <p className="mb-3  p-5 text-xl text-slate-200">
           <a href="/" className="text-teal-300">
             Raging Sea :{" "}
           </a>{" "}
           A scene showcasing the use of shaders with simplex noise
         </p>
-        <p className="mt-3  p-5 text-xl text-slate-200">
+        <p className="mb-3  p-5 text-xl text-slate-200">
           <a href="/" className="text-teal-300">
             Cans and Bottles :{" "}
           </a>{" "}
@@ -337,11 +342,11 @@ const HtmlContent = () => {
         // ref={inspRef}
         style={{
           // position: "absolute",
-          top: "1050vh",
+          top: "1150vh",
           left: "2.5vw",
-          fontSize: "4vw",
+          // fontSize: "4vw",
           // color: "gray",
-          textShadow: "0 0 0.5em gray",
+          // textShadow: "0 0 0.5em gray",
           // textAlign: "center",
           // width: "30vw",
           // height: "50vw",
@@ -350,7 +355,7 @@ const HtmlContent = () => {
           // borderRadius: "5px",
           // opacity: "0.9",
         }}
-        className="project min-w-[420px] border-fuchsia-300  text-fuchsia-300 shadow-fuchsia-500/50"
+        className="glass project min-w-[420px] border-fuchsia-300  text-fuchsia-300 shadow-fuchsia-500/50"
       >
         {" "}
         <p className="m-5  p-5 text-5xl font-bold">Contact me</p>
@@ -412,7 +417,7 @@ const HtmlContent = () => {
           Check out my projects
         </p>
       </div>
-      <div
+      {/* <div
         style={{
           transform: "translateY(100vh)",
         }}
@@ -455,7 +460,7 @@ const HtmlContent = () => {
             👋
           </motion.p>
         </h1>
-      </div>
+      </div> */}
     </Scroll>
   );
 };
