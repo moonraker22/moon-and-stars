@@ -6,10 +6,10 @@ import { useRef } from "react";
 const HtmlContent = () => {
   // const [width, setWidth] = useState(window.innerWidth);
   const width = useThree((state) => state.size.width);
-  const rightBox = `${width - 470}px`;
+  const rightBox = width - 470;
+  const leftBox = "20px";
   // const scrollText = width < 600 ? "500px" : "94.5vw";
   const scrollText = width > 600 ? "94.5vw" : "500px";
-  const leftBox = "20px";
 
   const scroll = useScroll();
   const moonrakerRef = useRef<HTMLDivElement>(null!);
@@ -17,6 +17,7 @@ const HtmlContent = () => {
   const devRef = useRef<HTMLDivElement>(null!);
   const builtRef = useRef<HTMLDivElement>(null!);
   const chevronRef = useRef<HTMLDivElement>(null!);
+  const scrollTextRef = useRef<HTMLDivElement>(null!);
   // let offset = 1 - scroll.offset
 
   // ! Framer Motion Values needs fixing
@@ -55,6 +56,7 @@ const HtmlContent = () => {
 
     opacity = 1 - scroll.range(0, 1 / (scroll.pages * 5));
     chevronRef.current.style.opacity = `${opacity}`;
+    scrollTextRef.current.style.opacity = `${opacity}`;
 
     // webRef.current.style.transform = `translate3d(-${offset * 11000}%, 0, 0)`;
     // devRef.current.style.transform = `translate3d(${offset * 200}%, 0, 0)`;
@@ -88,101 +90,89 @@ const HtmlContent = () => {
       >
         Site best viewed on desktop in landscape
       </p>
-      {/* <p
-        ref={webRef}
-        style={{
-          // position: "absolute",
-          // top: "83vh",
-          // left: "89vw",
-          fontSize: "2vw",
-          // color: "#C5C2BA",
-          lineHeight: "0.9em",
-          // width: "10vw",
-        }}
-        className=" absolute top-[80vh] left-[90vw] h-10 w-10  text-cyan-500"
-      >
-        Scroll Down
-      </p>{" "} */}
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[6vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        s
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[13vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        c
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[20vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        r
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[27vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        0
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[34vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        l
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[41vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        l
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[53vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        d
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[61vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        o
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className="scroll-text absolute top-[69vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
-      >
-        w
-      </motion.p>
-      <motion.p
-        style={{
-          left: width - 40,
-        }}
-        className={`scroll-text absolute top-[78vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200`}
-      >
-        n
-      </motion.p>
+
+      <motion.div ref={scrollTextRef}>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[6vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          s
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[13vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          c
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[20vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          r
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[27vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          0
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[34vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          l
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[41vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          l
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[53vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          d
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[61vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          o
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className="scroll-text absolute top-[69vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200"
+        >
+          w
+        </motion.p>
+        <motion.p
+          style={{
+            left: width - 40,
+          }}
+          className={`scroll-text absolute top-[78vh]  h-10 w-10 rotate-90 transform text-5xl uppercase leading-none text-slate-200`}
+        >
+          n
+        </motion.p>
+      </motion.div>
       <motion.div
         style={{
           left: width - 45,
@@ -218,17 +208,17 @@ const HtmlContent = () => {
       </h3>
       <h3
         style={{
-          left: width > 768 ? width - 250 : "2vw",
+          left: width > 768 ? width - 250 : width / 2 - 213,
         }}
         ref={builtRef}
-        className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[83.5vw] text-center  text-6xl text-zinc-300 shadow"
+        className="shadow-gray h-15 w-15 absolute top-[240vh] left-[83.5vw] text-center text-6xl  leading-none text-zinc-300 shadow"
         // className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
       </h3>
       <div
         style={{
-          left: width > 768 ? rightBox : width / 2 - 213,
+          left: width > 768 ? rightBox + 15 : width / 2 - 213,
         }}
         className="glass project top-[450vh]  border-cyan-200  shadow-cyan-500/50"
       >
@@ -249,7 +239,7 @@ const HtmlContent = () => {
         >
           <img
             loading="lazy"
-            src="payroll-gif.gif"
+            src="images/payroll-gif.gif"
             width={420}
             // Cloudinary URL
             // src="https://res.cloudinary.com/dmmntk6vn/image/upload/v1679871231/Portfolio/pay-animated_s0j90u.png"
@@ -259,7 +249,12 @@ const HtmlContent = () => {
         </a>
         <p className="mb-5  p-5 text-xl text-slate-200">
           It's in use and on the web{" "}
-          <a href="/" className="text-cyan-400">
+          <a
+            href="https://payroll-spa.web.app//"
+            className="text-cyan-400"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             here
           </a>
         </p>
@@ -282,27 +277,23 @@ const HtmlContent = () => {
           </a>
         </p>
         <p className=" text-sm text-slate-200">
-          <a href=" https://github.com/moonraker22/payroll-spa">
+          <a
+            href=" https://github.com/moonraker22/payroll-spa"
+            className="text-cyan-400"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             https://github.com/moonraker22/payroll-spa
           </a>
         </p>
       </div>
-      {/* </div> */}
       <div
-        // ref={inspRef}
         style={{
           position: "absolute",
           top: "650vh",
-          left: width > 768 ? rightBox : width / 2 - 240,
+          left: width > 768 ? leftBox : width / 2 - 240,
           fontSize: "4vw",
-          // color: "gray",
           textShadow: "0 0 0.5em gray",
-          // textAlign: "center",
-          // width: "30vw",
-          // height: "50vw",
-          // backgroundColor: "white",
-          // borderRadius: "5px",
-          // opacity: "0.9",
         }}
         className="glass project  border-amber-200  text-yellow-400 shadow-amber-500/50"
       >
@@ -320,39 +311,39 @@ const HtmlContent = () => {
             <img
               width={420}
               loading="lazy"
-              src="diamondhawk-gif.gif"
+              src="images/diamondhawk-gif.gif"
               alt="DiamondHawk"
             />
           </a>
         </div>
         <p className="mt-10  p-5 text-xl text-slate-200">
           You can check it out{" "}
-          <a href="https://diamondhawkusa.com/" className="text-yellow-400">
+          <a
+            href="https://diamondhawkusa.com/"
+            className="text-yellow-400"
+            target="_blank"
+            rel="noreferrer noopener"
+          >
             here
           </a>
         </p>
       </div>
       <div
-        // ref={inspRef}
         style={{
-          // position: "absolute",
           top: "850vh",
           left: width > 768 ? rightBox : width / 2 - 225,
-
           fontSize: "4vw",
-          // color: "gray",
           textShadow: "0 0 0.5em gray",
-          // textAlign: "center",
-          // width: "30vw",
-          // height: "80vw",
-          // backgroundColor: "white",
-          // borderRadius: "5px",
-          // opacity: "0.9",
         }}
         className="glass project min-w-[450px] border-teal-400 text-teal-300 shadow-teal-500/50"
       >
         <p className="mb-5  p-5 text-5xl font-bold">Some Other Projects</p>
-        <a href="/" className="text-teal-300">
+        <a
+          href="https://portal-omega-ten.vercel.app"
+          className="text-teal-300"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
           <img
             src="https://github.com/moonraker22/my-three-js-journey/blob/main/38-importing-and-optimizing-the-scene/38-vite/public/resources/portal_readme.jpg?raw=true"
             alt="Portal"
@@ -363,12 +354,19 @@ const HtmlContent = () => {
           <a
             href="https://portal-omega-ten.vercel.app"
             className="text-teal-300"
+            target="_blank"
+            rel="noreferrer noopener"
           >
             Portal :
           </a>
           A scene built with blender and react three fiber
         </p>
-        <a href="/" className="text-teal-300">
+        <a
+          href="https://marble-madness.vercel.app"
+          target={"_blank"}
+          rel="noreferrer noopener"
+          className="text-teal-300"
+        >
           <img
             src="https://github.com/moonraker22/my-three-js-journey/raw/main/53-create-a-game-with-r3f/public/Marble_Maddness.jpg"
             alt="Marble Madness"
@@ -376,41 +374,44 @@ const HtmlContent = () => {
           />
         </a>
         <p className="mb-3  p-3 text-xl text-slate-200">
-          <a href="https://marble-madness.vercel.app" className="text-teal-300">
+          <a
+            href="https://marble-madness.vercel.app"
+            target={"_blank"}
+            rel="noreferrer noopener"
+            className="text-teal-300"
+          >
             Marble Madness :{" "}
           </a>{" "}
           A game built with blender and react three fiber
         </p>
         <p className="mb-3  p-5 text-xl text-slate-200">
-          <a href="/" className="text-teal-300">
-            Raging Sea :{" "}
-          </a>{" "}
+          <a
+            href="https://raging-sea-rouge.vercel.app/"
+            target={"_blank"}
+            rel="noreferrer noopener"
+            className="text-teal-300"
+          >
+            Raging Sea :
+          </a>
           A scene showcasing the use of shaders with simplex noise
         </p>
         <p className="mb-3  p-5 text-xl text-slate-200">
-          <a href="/" className="text-teal-300">
-            Cans and Bottles :{" "}
-          </a>{" "}
+          <a
+            href="https://kjvb7w.csb.app/"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="text-teal-300"
+          >
+            Cans and Bottles :
+          </a>
           A scene using scroll controls and mouse position
         </p>
       </div>
       <div
         // ref={inspRef}
         style={{
-          // position: "absolute",
           top: "1150vh",
-          left: width > 768 ? rightBox : width / 2 - 210,
-
-          // fontSize: "4vw",
-          // color: "gray",
-          // textShadow: "0 0 0.5em gray",
-          // textAlign: "center",
-          // width: "30vw",
-          // height: "50vw",
-
-          // backgroundColor: "white",
-          // borderRadius: "5px",
-          // opacity: "0.9",
+          left: width > 768 ? leftBox : width / 2 - 210,
         }}
         className="glass project min-w-[420px] border-fuchsia-300  text-fuchsia-300 shadow-fuchsia-500/50"
       >
@@ -424,6 +425,8 @@ const HtmlContent = () => {
             href="https://www.linkedin.com/in/zachariah-kesler-9945155a"
             className="text-fuchsia-300"
             title="LinkedIn"
+            target="_blank"
+            rel="noreferrer noopener"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -443,6 +446,8 @@ const HtmlContent = () => {
             href="mailto:zxkst2@gmail.com"
             className="text-fuchsia-300"
             title="Email"
+            target="_blank"
+            rel="noreferrer noopener"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -459,7 +464,12 @@ const HtmlContent = () => {
           Send me an email
         </p>
         <p className="m-5  p-5 text-xl text-slate-200">
-          <a href=" https://github.com/moonraker22" title="Github">
+          <a
+            href=" https://github.com/moonraker22"
+            target={"_blank"}
+            rel="noreferrer noopener"
+            title="Github"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -474,50 +484,6 @@ const HtmlContent = () => {
           Check out my projects
         </p>
       </div>
-      {/* <div
-        style={{
-          transform: "translateY(100vh)",
-        }}
-        className="absolute top-[1250vh] left-[50vw] flex h-full w-full  flex-col items-center justify-center"
-      >
-        <h1
-          ref={devRef}
-          style={{
-            // position: "absolute",
-            // top: "1220vh",
-            // left: "42.5vw",
-            fontSize: "4vw",
-            // color: "#C5C2BA",
-            // color: "gray",
-            textShadow: "0 0 0.5em gray",
-            lineHeight: "1.0em",
-            // color: "gradient",
-          }}
-          className="text-center text-slate-300 opacity-90"
-        >
-          Thanks for stopping by!{" "}
-          <motion.p
-            className="inline-block text-center"
-            initial={{
-              rotate: 0,
-              transformOrigin: "bottom right 60",
-            }}
-            animate={{
-              rotate: [-2, 2],
-              transformOrigin: "top right 60",
-            }}
-            transition={{
-              duration: 0.2,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-              damping: 10,
-            }}
-          >
-            👋
-          </motion.p>
-        </h1>
-      </div> */}
     </Scroll>
   );
 };
