@@ -1,6 +1,7 @@
 import { Scroll, ScrollControls, Stars } from "@react-three/drei";
-import { Perf } from "r3f-perf";
 import "./App.css";
+
+// components
 import CameraTrac from "./components/CameraTrac";
 import Earth from "./components/Earth";
 import Effects from "./components/Effects";
@@ -21,19 +22,12 @@ export default function App() {
         <ScrollControls pages={14} damping={1} maxSpeed={0.1}>
           <CameraTrac>
             <Stars />
-            {/* <Selection> */}
             <Effects />
-            {/* <Select enabled> */}
             <Spaceship
               rotation={[Math.PI, Math.PI / 4, Math.PI]}
-              // position={[4, -12, 0]}
-              // position={[23, -5, 25]}
               scale={[4, 4, 4]}
             />
-            {/* <Spaceshuttle scale={50} rotation-y={Math.PI} /> */}
-            {/* </Select> */}
             <StarsModel data={data} range={35 * 5.5} />
-            {/* </Selection> */}
             <Scroll>
               <HtmlContent />
             </Scroll>
@@ -42,7 +36,7 @@ export default function App() {
           <Earth position={[0, 0, 350]} rotation-x={Math.PI} />
           <TextIntro />
           <TextOutro />
-          <Perf position={"top-left"} />
+          {/* <Perf position={"top-left"} /> */}
         </ScrollControls>
       </MyCanvas>
     </>
