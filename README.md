@@ -4,7 +4,7 @@ A react three fiber scene with scroll controls
 
 ## Demo
 
-[https://moon-and-stars.vercel.app/](https://moon-and-stars.vercel.app/)
+[https://moon-and-stars.vercel.app/](https://moonraker.vercel.app/)
 
 ## Authors
 

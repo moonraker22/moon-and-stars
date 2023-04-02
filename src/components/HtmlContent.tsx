@@ -65,22 +65,8 @@ const HtmlContent = () => {
 
   return (
     <Scroll html>
-      {/* <h1
-        ref={moonrakerRef}
-        style={{
-          position: "absolute",
-          top: "60vh",
-          left: "0.9em",
-          fontSize: "10vw",
-          color: "#C5C2BA",
-          transform: `translateX(-${offset * 100}%)`,
-        }}
-      >
-        Hi
-      </h1> */}
       <p
         style={{
-          // left: width - 80,
           left: 3,
 
           fontSize: "1vw",
@@ -194,12 +180,6 @@ const HtmlContent = () => {
           />
         </motion.svg>
       </motion.div>
-      {/* <h1
-        ref={webRef}
-        className="shadow-gray absolute top-[100vh] left-[75vw] h-10 w-10 text-center text-8xl  leading-none text-zinc-300"
-      >
-        I'm Zac
-      </h1> */}
       <h3
         ref={devRef}
         className="build-text shadow-gray absolute top-[120vh] left-[3.5vw] h-10 w-10 text-center  text-7xl leading-none text-zinc-400"
@@ -212,7 +192,6 @@ const HtmlContent = () => {
         }}
         ref={builtRef}
         className="shadow-gray h-15 w-15 absolute top-[240vh] left-[83.5vw] text-center text-6xl  leading-none text-zinc-300 shadow"
-        // className="shadow-gray h-15 w-15 eading-relaxed absolute top-[240vh] left-[65.5vw] text-center  text-6xl text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
       </h3>
