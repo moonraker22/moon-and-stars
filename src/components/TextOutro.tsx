@@ -1,10 +1,5 @@
 import { animated, easings, useSpring } from "@react-spring/three";
-import {
-  Billboard,
-  Text3D,
-  useMatcapTexture,
-  useScroll,
-} from "@react-three/drei";
+import { Billboard, Text3D, useScroll, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef, useState } from "react";
 import { Group, Mesh, MeshMatcapMaterial } from "three";
@@ -46,7 +41,9 @@ const TextOutro = (texture, ...props) => {
 
   const [scale] = useState(scaleWidth);
 
-  const [matcapTexture] = useMatcapTexture("7877EE_D87FC5_75D9C7_1C78C0", 256);
+  // const [matcapTexture] = useMatcapTexture("7877EE_D87FC5_75D9C7_1C78C0", 256);
+  const matcapTexture = useTexture("images/normal-matcap.png");
+
   const scroll = useScroll();
 
   const [springs, api] = useSpring(

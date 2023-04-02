@@ -1,9 +1,4 @@
-import {
-  Billboard,
-  Text3D,
-  useMatcapTexture,
-  useScroll,
-} from "@react-three/drei";
+import { Billboard, Text3D, useScroll, useTexture } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import { Mesh, Vector3 } from "three";
@@ -45,7 +40,8 @@ const TextIntro = (texture, ...props) => {
 
   //
 
-  const [matcapTexture] = useMatcapTexture("515151_DCDCDC_B7B7B7_9B9B9B", 256);
+  // const [matcapTexture] = useMatcapTexture("515151_DCDCDC_B7B7B7_9B9B9B", 256);
+  const matcapTexture = useTexture("images/white-matcap.png");
   const scroll = useScroll();
   useFrame(() => {
     let visable = scroll.visible(0, 5 / scroll.pages);
