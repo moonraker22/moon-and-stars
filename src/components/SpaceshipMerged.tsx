@@ -6,37 +6,44 @@ import { animated, easings, useSpring } from "@react-spring/three";
 import { useAnimations, useGLTF, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
-import * as THREE from "three";
+import {
+  AnimationAction,
+  Color,
+  Group,
+  Mesh,
+  MeshMatcapMaterial,
+  MeshStandardMaterial,
+} from "three";
 import { GLTF } from "three-stdlib";
 
 type GLTFResult = GLTF & {
   nodes: {
-    Cylinder: THREE.Mesh;
-    Cube005: THREE.Mesh;
-    Cube005_1: THREE.Mesh;
-    Cube005_2: THREE.Mesh;
-    Cube005_3: THREE.Mesh;
-    Cube005_4: THREE.Mesh;
-    Cube005_5: THREE.Mesh;
-    Cube005_6: THREE.Mesh;
+    Cylinder: Mesh;
+    Cube005: Mesh;
+    Cube005_1: Mesh;
+    Cube005_2: Mesh;
+    Cube005_3: Mesh;
+    Cube005_4: Mesh;
+    Cube005_5: Mesh;
+    Cube005_6: Mesh;
   };
   materials: {
-    Flame: THREE.MeshStandardMaterial;
-    Mat0: THREE.MeshStandardMaterial;
-    Mat1: THREE.MeshStandardMaterial;
-    Mat2: THREE.MeshStandardMaterial;
-    Window_Frame: THREE.MeshStandardMaterial;
-    Mat4: THREE.MeshStandardMaterial;
-    Mat3: THREE.MeshStandardMaterial;
-    Window: THREE.MeshStandardMaterial;
+    Flame: MeshStandardMaterial;
+    Mat0: MeshStandardMaterial;
+    Mat1: MeshStandardMaterial;
+    Mat2: MeshStandardMaterial;
+    Window_Frame: MeshStandardMaterial;
+    Mat4: MeshStandardMaterial;
+    Mat3: MeshStandardMaterial;
+    Window: MeshStandardMaterial;
   };
 };
 
 type ActionName = "Cube.003" | "CylinderAction";
-type GLTFActions = Record<ActionName, THREE.AnimationAction>;
+type GLTFActions = Record<ActionName, AnimationAction>;
 
 export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
-  const group = useRef<THREE.Group>();
+  const group = useRef<Group>();
   const { nodes, materials, animations } = useGLTF(
     "models/spaceship.glb"
   ) as GLTFResult;
@@ -44,7 +51,7 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
   // const [matcap] = useMatcapTexture("7877EE_D87FC5_75D9C7_1C78C0", 256);
   const matcap = useTexture("images/normal-matcap.png");
 
-  const matcapMaterial = new THREE.MeshMatcapMaterial({
+  const matcapMaterial = new MeshMatcapMaterial({
     matcap,
     // color: new THREE.Color(1.5, 1.5, 0.3),
   });
@@ -57,9 +64,9 @@ export default function Spaceship(props: JSX.IntrinsicElements["group"]) {
   }, [actions]);
 
   // mesh emission material
-  const material = new THREE.MeshStandardMaterial({
-    color: new THREE.Color(1.5, 1.5, 0.3),
-    emissive: new THREE.Color(1.7, 1.2, 1), // WHITE emissive COLOR
+  const material = new MeshStandardMaterial({
+    color: new Color(1.5, 1.5, 0.3),
+    emissive: new Color(1.7, 1.2, 1), // WHITE emissive COLOR
     emissiveIntensity: 4, // Intensity of emissive COLOR
   });
   material.toneMapped = false;
