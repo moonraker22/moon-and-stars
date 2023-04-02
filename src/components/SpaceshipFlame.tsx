@@ -10,7 +10,7 @@ import * as THREE from "three";
 export default function Model(props) {
   const group = useRef<THREE.Group>(null!);
   // @ts-ignore
-  const { nodes, materials, animations } = useGLTF("spaceship.glb");
+  const { nodes, materials, animations } = useGLTF("models/spaceship.glb");
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -110,4 +110,4 @@ export default function Model(props) {
   );
 }
 
-useGLTF.preload("/spaceship.gltf");
+useGLTF.preload("models/spaceship.gltf");
