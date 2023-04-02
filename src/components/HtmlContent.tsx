@@ -269,7 +269,7 @@ const HtmlContent = () => {
       <div
         style={{
           position: "absolute",
-          top: "650vh",
+          top: "675vh",
           left: width > 768 ? leftBox : width / 2 - 240,
           fontSize: "4vw",
           textShadow: "0 0 0.5em gray",
@@ -324,7 +324,7 @@ const HtmlContent = () => {
           rel="noreferrer noopener"
         >
           <img
-            src="https://github.com/moonraker22/my-three-js-journey/blob/main/38-importing-and-optimizing-the-scene/38-vite/public/resources/portal_readme.jpg?raw=true"
+            src="images/portal_readme.jpg"
             alt="Portal"
             className=" mx-auto mb-5 w-96 object-cover"
           />
@@ -347,7 +347,7 @@ const HtmlContent = () => {
           className="text-teal-300"
         >
           <img
-            src="https://github.com/moonraker22/my-three-js-journey/raw/main/53-create-a-game-with-r3f/public/Marble_Maddness.jpg"
+            src="images/Marble_Maddness.jpg"
             alt="Marble Madness"
             className=" mx-auto w-96 object-cover"
           />
@@ -389,7 +389,7 @@ const HtmlContent = () => {
       <div
         // ref={inspRef}
         style={{
-          top: "1150vh",
+          top: "1100vh",
           left: width > 768 ? leftBox : width / 2 - 210,
         }}
         className="glass project min-w-[420px] border-fuchsia-300  text-fuchsia-300 shadow-fuchsia-500/50"
