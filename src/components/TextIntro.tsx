@@ -61,10 +61,13 @@ const TextIntro = (texture, ...props) => {
             height={0.2}
             curveSegments={12}
             bevelEnabled
-            bevelThickness={0.02}
-            bevelSize={0.02}
+            bevelThickness={0.5}
+            bevelSize={0.225}
             bevelOffset={0}
             bevelSegments={5}
+            letterSpacing={0.3}
+            // rotation-x={-0.2}
+            // rotation-y={-0.2}
           >
             Hi I'm Zac
             <meshMatcapMaterial attach="material" matcap={matcapTexture} />

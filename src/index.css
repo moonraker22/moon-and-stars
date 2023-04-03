@@ -64,3 +64,7 @@ html {
   color: rgba(251, 252, 253, 0.5);
   text-shadow: 0 10px 30px rgba(1, 1, 1, 0.5);
 } */
+
+.small-screen {
+  max-width: 350px;
+}

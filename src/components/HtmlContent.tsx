@@ -71,6 +71,7 @@ const HtmlContent = () => {
 
           fontSize: "1vw",
           lineHeight: "0.9em",
+          fontWeight: "bold",
         }}
         className="absolute top-[3vh]  w-20 text-center text-3xl text-slate-200"
       >
@@ -188,10 +189,10 @@ const HtmlContent = () => {
       </h3>
       <h3
         style={{
-          left: width > 768 ? width - 250 : width / 2 - 213,
+          left: width > 768 ? width - 250 : width / 2 - 150,
         }}
         ref={builtRef}
-        className="shadow-gray h-15 w-15 absolute top-[240vh] left-[83.5vw] text-center text-6xl  leading-none text-zinc-300 shadow"
+        className="shadow-gray h-15 w-15 absolute top-[240vh] text-center text-6xl  leading-none text-zinc-300 shadow"
       >
         Here's some of the stuff I've built
       </h3>
@@ -276,7 +277,7 @@ const HtmlContent = () => {
         }}
         className="glass project  border-amber-200  text-yellow-400 shadow-amber-500/50"
       >
-        <p className="m-5  p-5 text-5xl font-bold">DiamondHawk</p>
+        <p className="my-5  py-5 text-5xl font-bold">DiamondHawk</p>
         <p className="m-5  p-5 text-2xl text-slate-200">
           An E-commerce website I built for a local business. It's built using
           HTML, CSS, Handlebars.

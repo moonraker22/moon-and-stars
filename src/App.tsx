@@ -18,7 +18,7 @@ export default function App() {
   return (
     <>
       <MyCanvas>
-        <directionalLight intensity={1.1} castShadow position={[10, 10, 0]} />
+        <directionalLight intensity={1.1} castShadow position={[10, 10, -1]} />
         <ScrollControls pages={14} damping={1} maxSpeed={0.1}>
           <CameraTrac>
             <Stars />

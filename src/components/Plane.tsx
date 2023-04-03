@@ -1,36 +1,35 @@
-import { useScroll, useTexture } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import { useContext, useEffect, useRef, useState } from "react";
-import { Color, Vector3 } from "three";
-import { Context } from "./CameraTrac";
+import { useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { Color } from "three";
 
 const MyPlane = ({ ...props }) => {
-  const planeRef = useRef<any>();
-  const endRef = useRef<any>();
-  const scroll = useScroll();
-  const tubeRef = useContext(Context);
+  // const planeRef = useRef<any>();
+  // const endRef = useRef<any>();
+  // const scroll = useScroll();
+  // const tubeRef = useContext(Context);
 
-  const [position, setPosition] = useState(
-    new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.01))
-  );
+  // const [position, setPosition] = useState(
+  //   new Vector3(tubeRef?.geometry.parameters.path.getPointAt(0.01))
+  // );
 
-  const viewDirection = new Vector3();
+  // const viewDirection = new Vector3();
 
-  const cameraRotation = useThree((state) => state.camera.rotation);
-  const cameraPosition = useThree((state) => state.camera.position);
-  //   viewDirection.set(0, 0, -1).applyQuaternion(cameraRotation)
-  viewDirection.setFromEuler(cameraRotation);
+  // const cameraRotation = useThree((state) => state.camera.rotation);
+  // const cameraPosition = useThree((state) => state.camera.position);
+  // //   viewDirection.set(0, 0, -1).applyQuaternion(cameraRotation)
+  // viewDirection.setFromEuler(cameraRotation);
 
-  useEffect(() => {
-    let test = new Vector3();
-    if (tubeRef) {
-      test = tubeRef?.geometry.parameters.path.getPointAt(0.01);
-      setPosition(test);
+  // useEffect(() => {
+  //   let test = new Vector3();
+  //   if (tubeRef) {
+  //     test = tubeRef?.geometry.parameters.path.getPointAt(0.01);
+  //     setPosition(test);
 
-      // setNextPosition(tubeRef?.geometry.parameters.path.getPointAt(0.09));
-      // setEndPosition(tubeRef?.geometry.parameters.path.getPointAt(0.9999));
-    }
-  }, [tubeRef]);
+  //     // setNextPosition(tubeRef?.geometry.parameters.path.getPointAt(0.09));
+  //     // setEndPosition(tubeRef?.geometry.parameters.path.getPointAt(0.9999));
+  //   }
+  // }, [tubeRef]);
 
   const moonTex = useTexture("images/moon.jpeg");
   const moonRef = useRef<any>();
