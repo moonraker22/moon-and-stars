@@ -15,10 +15,19 @@ const MyCanvas = ({ children }) => {
         </Suspense>
       </Canvas>
       <Loader
-        containerStyles={{ background: "black" }} // Flex layout styles
+        containerStyles={{
+          backgroundImage: "linear-gradient(to bottom, #434343 0%, black 100%)",
+        }} // Flex layout styles
         innerStyles={{ border: "1px solid", borderRadius: "10px" }} // Inner container styles
         barStyles={{ height: "10px" }} // Loading-bar styles
-        dataStyles={{ color: "white", fontSize: "2em" }} // Text styles
+        dataStyles={{
+          color: "white",
+          fontSize: "1.75em",
+          background: "-webkit-linear-gradient(#fff, #444, #fff)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          fontWeight: "bold",
+        }} // Text styles
         // dataInterpolation={(p) => `Loading ${p.toFixed(2)}%`} // Text
         initialState={(active) => {
           return active;

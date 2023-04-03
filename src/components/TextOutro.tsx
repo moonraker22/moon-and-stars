@@ -41,8 +41,8 @@ const TextOutro = (texture, ...props) => {
 
   const [scale] = useState(scaleWidth);
 
-  // const [matcapTexture] = useMatcapTexture("7877EE_D87FC5_75D9C7_1C78C0", 256);
-  const matcapTexture = useTexture("images/normal-matcap.png");
+  // const [matcapTexture] = useMatcapTexture("161B1F_C7E0EC_90A5B3_7B8C9B", 256);
+  const matcapTexture = useTexture("images/outro-matcap.png");
 
   const scroll = useScroll();
 
@@ -95,13 +95,21 @@ const TextOutro = (texture, ...props) => {
             ref={textRef1}
             font="fonts/Audiowide_Regular.json"
             size={6}
-            height={0.2}
+            // height={0.2}
+            // curveSegments={12}
+            // bevelEnabled
+            // bevelThickness={0.02}
+            // bevelSize={0.02}
+            // bevelOffset={0}
+            // bevelSegments={5}
+            height={0.5}
             curveSegments={12}
             bevelEnabled
-            bevelThickness={0.02}
-            bevelSize={0.02}
+            bevelThickness={0.8}
+            bevelSize={0.5}
             bevelOffset={0}
             bevelSegments={5}
+            letterSpacing={0.8}
           >
             Thanks for
             <meshMatcapMaterial
@@ -115,13 +123,21 @@ const TextOutro = (texture, ...props) => {
           <Text3D
             font="fonts/Audiowide_Regular.json"
             size={6}
-            height={0.2}
+            // height={0.2}
+            // curveSegments={12}
+            // bevelEnabled
+            // bevelThickness={0.02}
+            // bevelSize={0.02}
+            // bevelOffset={0}
+            // bevelSegments={5}
+            height={0.5}
             curveSegments={12}
             bevelEnabled
-            bevelThickness={0.02}
-            bevelSize={0.02}
+            bevelThickness={0.8}
+            bevelSize={0.5}
             bevelOffset={0}
             bevelSegments={5}
+            letterSpacing={0.8}
             position={[0, -40, 0]}
           >
             stopping by!
