@@ -18,7 +18,21 @@ const HtmlContent = () => {
   const builtRef = useRef<HTMLDivElement>(null!);
   const chevronRef = useRef<HTMLDivElement>(null!);
   const scrollTextRef = useRef<HTMLDivElement>(null!);
+  const diamodHawkRef = useRef<HTMLDivElement>(null!);
   // let offset = 1 - scroll.offset
+
+  console.log(diamodHawkRef.current?.getBoundingClientRect().width, "width");
+
+  // useEffect(() => {
+  //   if (diamodHawkRef?.current) {
+  //     diamodHawkRef.current.style.left =
+  //       (window.innerWidth -
+  //         diamodHawkRef.current?.getBoundingClientRect().width) /
+  //         2 -
+  //       200 +
+  //       "px";
+  //   }
+  // }, []);
 
   // ! Framer Motion Values needs fixing
   // const { scrollY } = useFramerScroll();
@@ -55,8 +69,12 @@ const HtmlContent = () => {
     visable = scroll.visible(0, 1 / (scroll.pages * 5));
 
     opacity = 1 - scroll.range(0, 1 / (scroll.pages * 5));
-    chevronRef.current.style.opacity = `${opacity}`;
-    scrollTextRef.current.style.opacity = `${opacity}`;
+    if (chevronRef?.current?.style) {
+      chevronRef.current.style.opacity = `${opacity}`;
+    }
+    if (scrollTextRef?.current?.style) {
+      scrollTextRef.current.style.opacity = `${opacity}`;
+    }
 
     // webRef.current.style.transform = `translate3d(-${offset * 11000}%, 0, 0)`;
     // devRef.current.style.transform = `translate3d(${offset * 200}%, 0, 0)`;
@@ -65,7 +83,7 @@ const HtmlContent = () => {
 
   return (
     <Scroll html>
-      <p
+      {/* <p
         style={{
           left: 3,
 
@@ -76,7 +94,7 @@ const HtmlContent = () => {
         className="absolute top-[3vh]  w-20 text-center text-3xl text-slate-200"
       >
         Site best viewed on desktop in landscape
-      </p>
+      </p> */}
 
       <motion.div ref={scrollTextRef}>
         <motion.p
@@ -189,7 +207,8 @@ const HtmlContent = () => {
       </h3>
       <h3
         style={{
-          left: width > 768 ? width - 250 : width / 2 - 150,
+          left: width > 768 ? width - 250 : width - 225,
+          textAlign: "right",
         }}
         ref={builtRef}
         className="shadow-gray h-15 w-15 absolute top-[240vh] text-center text-6xl  leading-none text-zinc-300 shadow"
@@ -268,10 +287,11 @@ const HtmlContent = () => {
         </p>
       </div>
       <div
+        ref={diamodHawkRef}
         style={{
           position: "absolute",
           top: "675vh",
-          left: width > 768 ? leftBox : width / 2 - 240,
+          left: width > 768 ? leftBox : width / 2 - 200,
           fontSize: "4vw",
           textShadow: "0 0 0.5em gray",
         }}

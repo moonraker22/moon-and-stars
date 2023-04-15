@@ -7,7 +7,12 @@ type Props = {};
 const MyCanvas = ({ children }) => {
   return (
     <>
-      <Canvas camera={{ fov: 65 }} gl={{ antialias: true }} dpr={[1, 2]}>
+      <Canvas
+        camera={{ fov: 65 }}
+        gl={{ antialias: true }}
+        dpr={[1, 2]}
+        shadows
+      >
         <Suspense>
           <AdaptiveDpr pixelated />
           <Preload all />
